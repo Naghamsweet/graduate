@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <title>السجل المالي</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script> 
+    </head>
+
+<body>
+    <section class="headerinfo">
+        <nav>
+            <!-- <a href="index.html"><img src="images/Logo.jpg"></a> -->
+            <div class="nav-links3" id="navLinks">
+                <ul>
+                    <li>
+                        <form  action="{{ url_for('afterlogin') }}" method="POST">
+                          <input style="display: none" type="text" name="number" value="{{v2}}" id="number" >
+                          <button type="submit" class="gh">رجوع</button><i class="fa fa-backward"></i>
+                          </form></li>
+
+                    <li><a href="{{ url_for('login') }}">تسجيل الخروج</a><i class="fa fa-sign-out" ></i></li>
+                   
+                    <li><a href="{{ url_for('home') }}">الصفحة الرئيسية</a><i class="fa fa-home" ></i></li>
+                </ul>
+            </div>
+
+            
+        </nav>
+        <center>
+            <div class="sidebar1">
+                <br><br>
+       
+      <h1 class="h1">السجل المالي</h1>
+      
+      <br>
+      <center>
+      <div class="editInfo">
+<table class="changetable">
+    <img class="ph1" src="{{ url_for('static', filename='finance.jpeg') }}">
+    <div class="tt">
+   
+    <tr>
+        <td> <input type="text" id="firstNumber" class="input5"/><br></td>
+        <td> عدد الساعات المراد احتسابها</td>
+    </tr>
+    
+</table>
+<br><br>
+        <input type="button" class="cal" onClick="multiplyBy()"  Value="احتساب" /><br>
+<table class="changetable">
+<td><span id = "result" class="input6"></span></td>
+<td>المبلغ المطلوب</td> 
+</table>
+<br><br>
+<h2 class="h0">رصيدك الحالي {{ finance }} دينار</h2>
+</div>
+      </div>
+                </div>
+            </center>
+        </center>
+
+
+ <script>
+ var flag="";
+ if(annyang) {
+          var commands = {
+           'تسجيل الخروج':function(){     
+             document.getElementsByTagName("a")[1].click();
+             
+           },
+           'الصفحه الرئيسيه':function(){     
+             document.getElementsByTagName("a")[2].click();
+             
+           },
+           'رجوع':function(){     
+            document.getElementsByClassName("gh")[0].click();            
+           }, 
+           'عدد الساعات المراد احتسابها *tag':function(variable){ 
+           let firstnumber= document.getElementById('firstNumber');
+           variable=variable.replaceAll(" ", "");
+           variable2=convert(variable);
+            console.log(flag)
+              if (flag=="true"){
+              firstnumber.value= variable2;
+              }
+             else{
+              firstnumber.value= variable;
+            }
+           },
+           'احتساب':function(){ 
+           document.getElementsByClassName('cal')[0].click();
+           },
+          
+        
+          }
+         };
+         annyang.setLanguage('ar-PA');
+         // Add our commands to annyang
+         annyang.addCommands(commands);
+       
+         annyang.debug();
+        annyang.start({ autoRestart: true, continuous: true });
+
+
+        function multiplyBy()
+  {
+  num1 = document.getElementById( 
+            "firstNumber").value;
+//   num2 = document.getElementById(
+//     "secondNumber").value; 
+ document.getElementById("result").innerHTML = num1 * 24;
+ }
+
+    function convert(variable){
+        if (variable=="تسعه"){
+            flag="true"
+            return 9
+        }
+        if (variable=="ثمانيه"){
+            flag="true"
+            return 8
+        }
+        if (variable=="سبعه"){
+            flag="true"
+            return 7
+        }
+        if (variable=="سته"){
+            flag="true"
+            return 6
+        }
+        if (variable=="خمسه"){
+            flag="true"
+            return 5
+        }
+        if (variable=="اربعه"){
+            flag="true"
+            return 4
+        }
+        if (variable=="ثلاثه"){
+            flag="true"
+            return 3
+        }
+        if (variable=="تلاته"){
+            flag="true"
+            return 3
+        }
+        if (variable=="اثنين"){
+            flag="true"
+            return 2
+        }
+        if (variable=="اتنين"){
+            flag="true"
+            return 2
+        }
+        if (variable=="واحد"){
+            flag="true"
+            return 1
+        }
+        if (variable=="صفر"){
+            flag="true"
+            return 0
+        }
+     flag="false"
+    }
+          </script>
+              </body>   
+            
+              </html>

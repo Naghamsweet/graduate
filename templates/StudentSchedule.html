@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <title>جدول الطالب</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+   
+</head>
+<body>
+  <section class="header">
+    <nav>
+        <div class="nav-links1" id="navLinks">
+            <ul>
+              <li>
+                <form  action="{{ url_for('afterlogin') }}" method="POST">
+                  <input style="display: none" type="text" name="number" value="{{v2}}" id="number" >
+                  <button type="submit" class="ghs">رجوع</button><i class="fa fa-backward"></i>
+                  </form></li>
+
+                <li><a href="{{ url_for('login') }}">تسجيل الخروج</a><i class="fa fa-sign-out" ></i></li>
+               
+                <li><a href="{{ url_for('home') }}">الصفحة الرئيسية</a><i class="fa fa-home" ></i></li>
+            </ul>
+        </div>
+
+        
+    </nav>
+    <center>
+      <div class="sidebar1">
+        <br><br>
+
+<h1>جدول الطالب</h1>
+<br><br>
+  
+    <table class="table1" >
+      <thead>
+        <th >رمز المقرر</th>
+        <th >اسم المقرر</th>
+     
+        <th>عدد الساعات المعتمدة</th>
+        <th>الشعبة</th>
+        <th>الوقت</th>
+        <th>المحاضر</th>
+        <th>القاعة</th>
+        <th>المبنى</th>
+        </thead></tr>
+       
+        <tbody>
+
+          {% for row in value %}                         
+          <tr>
+           <td>{{row[7]}}</td>
+           <td>{{row[6]}}</td>
+           <td>{{row[5]}}</td>
+           <td>{{row[4]}}</td>
+           <td>{{row[3]}}</td>
+           <td>{{row[2]}}</td>
+           <td>{{row[1]}}</td>
+           <td>{{row[0]}}</td>
+         
+           </tr>
+           {% endfor %}
+      
+     </tbody>
+    
+    </table></div>
+  </center>
+  </body>
+  <script>
+    if(annyang) {
+          var commands = {
+           'تسجيل الخروج':function(){     
+             document.getElementsByTagName("a")[1].click();
+             
+           },
+           'الصفحه الرئيسيه':function(){     
+             document.getElementsByTagName("a")[2].click();
+             
+           },
+           'رجوع':function(){ 
+            document.getElementsByClassName("ghs")[0].click();
+    
+           },
+            
+          
+          }
+         };
+         annyang.setLanguage('ar-PA');
+         // Add our commands to annyang
+         annyang.addCommands(commands);
+       
+         annyang.debug();
+        annyang.start({ autoRestart: true, continuous: true });
+</script>
+  
+
+  </html>

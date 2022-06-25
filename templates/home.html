@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script> 
+
+    </head>
+
+    <body>
+      <section class="header">
+        <div class="text-box">
+            <h1>اهلا بكم في البورتال الجديييييد </h1>
+            <p>سجل وانت مرتاح</p>
+            <br>
+            <a href="{{ url_for('login') }}" class="hero-btn">تسجيل الدخول</a>
+            <a href="" class="hero-btn">مساعدة</a>
+    
+        </div>
+    
+    </section>
+    
+            
+   
+    </body>
+
+    <Script>
+        if(annyang) {
+          var commands = {
+            'تسجيل الدخول':function(){     
+             document.getElementsByClassName("hero-btn")[0].click();
+             
+           },
+           
+           'مساعده':function(){
+             document.getElementsByClassName("hero-btn")[1].click();
+     
+            },
+           
+           }
+         };
+         annyang.setLanguage('ar-PA');
+         // Add our commands to annyang
+         annyang.addCommands(commands);
+       
+         annyang.debug();
+        annyang.start({ autoRestart: true, continuous: true });
+         
+     </script>
+   
+    
+</html>

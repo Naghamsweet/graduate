@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />       
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+        <title>انشاء حساب لطالب</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script>
+           $( document ).ready(function() {
+    var first=document.getElementsByClassName('inputt')[0].value;
+    var last=document.getElementsByClassName('inputt')[1].value;
+    var num=document.getElementsByClassName('inputt')[2].value;
+    var dept=document.getElementsByClassName('inputt')[3].value;
+    var email=document.getElementsByClassName('inputt')[5].value;
+    var gen=document.getElementsByClassName('inputt')[6].value;
+    var phone=document.getElementsByClassName('inputt')[4].value;
+    var passw=document.getElementsByClassName('inputt')[7].value;
+    var finance=document.getElementsByClassName('inputt')[8].value;
+    var yess=document.getElementsByClassName('yess');
+   
+    $(".yess").css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+        // $(".yess").css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)");  
+        $(".yess").css("border","2px solid #fff");
+        $(".yess").css("color"," color: #000");
+      
+     var checkAndChange =function(){
+        
+    if(first==""||last==""||num==""||dept==""||email==""||gen==""||phone==""||passw==""||finance==""){
+        $('#bb').prop('disabled', true)
+        $(".yess").css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+        // $(".yess").css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)");   
+        $(".yess").css("color"," color: #000");   
+    }
+    else{
+        
+        $('#bb').prop('disabled', false)
+        
+        $(".yess").css("background-color","#4f646f");
+        $(".yess").css("border","2px solid #fff");
+        $(".yess").css("color"," color: #000");
+
+    } }
+    $("input").keyup(function(){
+    var first2=document.getElementsByClassName('inputt')[0].value;
+    var last2=document.getElementsByClassName('inputt')[1].value;
+    var num2=document.getElementsByClassName('inputt')[2].value;
+    var dept2=document.getElementsByClassName('inputt')[3].value;
+    var email2=document.getElementsByClassName('inputt')[5].value;
+    var gen2=document.getElementsByClassName('inputt')[6].value;
+    var phone2=document.getElementsByClassName('inputt')[4].value;
+    var passw2=document.getElementsByClassName('inputt')[7].value;
+    var finance2=document.getElementsByClassName('inputt')[8].value;
+    var yess2=document.getElementsByClassName('yess');
+       
+        first=first2;
+        last=last2;
+        num=num2;
+        dept=dept2;
+        email=email2;
+        gen=gen2;
+        phone=phone2;
+        passw=passw2;
+        finance=finance2;
+        yess=yess2;
+        
+        checkAndChange();
+    });
+  
+     });
+          </script>
+    </head>
+
+<body>
+    <input style="display:none" type="text" value="" id="confirm">
+    
+    <section class="header">
+        <nav>
+            
+            <div class="nav-links15" id="navLinks">
+                <ul>
+                
+                      <li>
+                    <form  action="{{ url_for('admin') }}" method="POST">
+                        <!-- <input style="display: none" type="text" name="number" value="12" id="number" > -->
+                        <button type="submit" class="gh">رجوع</button><i class="vv fa fa-backward"></i>
+                        </form></li>
+                        
+                        <li><a href="{{ url_for('login') }}">تسجيل الخروج</a><i class="vv fa fa-sign-out" ></i></li>
+                       
+                        <li><a href="{{ url_for('home') }}">الصفحة الرئيسية</a><i class="vv fa fa-home" ></i></li>
+             
+             
+                </ul>
+            </div>
+        </nav>
+
+        <center>
+            <div class="sidebar1">
+                <br><br><bt><br><br><br>
+       
+      <h1 class="h1 ee">انشاء حساب للطالب</h1>
+      <br>
+      <center>
+      <div class="addInfo">
+<table class="addtable">
+    <div class="tt">
+      
+    <tr>
+        <td>  <input type="text"  name=" firstname" required class="inputt" placeholder="الاسم الأول"></td>
+        <!-- <td>:اسم الطالب الأول</td>  --> 
+    </tr>
+    
+    <tr>
+        <td> <input type="text" name=" the college" required class="inputt" placeholder="الاسم الثاني"> </td>
+        <!-- <td> :اسم الطالب الثاني</td> -->
+    </tr>
+    <tr>
+        <td> <input type="text"  name=" id"  pattern="[0-9]{4}[0-9]{5}"required class="inputt" placeholder="رقم الطالب"></td>
+        <!-- <td>:رقم الطالب</td> -->
+    </tr>
+    <tr> 
+        <!-- <tr>
+        <td> <input type="text" name=" the  major" required class="inputt" placeholder="الكلية "> </td>
+        <td>:الكليه</td>
+    </tr> -->
+        
+        <tr>
+            <td> <input type="text" name=" the University major" required class="inputt" placeholder="التخصص الجامعي "></td>
+            <!-- <td>:التخصص الجامعي</td> -->
+        </tr>
+        <tr>
+          <td> <input type="text" name=" the college" required class="inputt" placeholder="رقم الهاتف"> </td>
+          <!-- <td> :رقم الهاتف</td> -->
+      </tr>
+    </tr>
+  
+  
+</table>
+<table class="addtable1">
+    <div class="tt">
+
+        <tr>
+            <td> <input type="email" name="email" id="email" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}" 
+                style="text-transform: lowercase" required class="inputt" placeholder="البريد الالكتروني"></td>
+            <!-- <td>:البريد الالكتروني</td> -->
+        </tr>
+   
+    <tr>
+            <td> <input type="text" class="inputt" id="a1" name="c" value="" placeholder="الجنس" required></td>
+            <!-- <td>:الجنس</td> -->
+        </tr>
+        
+      
+        <tr>
+            <td>     <i class="bi bi-eye-slash" id="togglePassword"></i>
+                <input type="password" name="password" id="password" class="inputt" placeholder="كلمة السر"   ></td>
+            <!-- <td>:كلمة السر</td> -->
+        </tr>
+        <tr>
+            <td> 
+                <input type="text" name="finance" id="fi" class="inputt" placeholder="السجل المالي"  /></td>
+            <!-- <td>:السجل المالي</td> -->
+        </tr>
+   
+  
+</table>
+<button  id="bb"  value="تأكيد" class="yess" disabled >اضافة</button>
+
+</div>
+        <!-- <input type="text" id="FN" name="FN" value="اسيل رجب" readonly><br><br> -->
+      </div>
+                </div>
+            </center>
+        </center>
+
+      
+    </section>
+
+   <script>
+    
+     
+     if(annyang) {
+          var commands = {
+           'تسجيل الخروج':function(){     
+             document.getElementsByTagName("a")[0].click();
+             
+           },
+           'الصفحه الرئيسيه':function(){     
+             document.getElementsByTagName("a")[1].click();
+             
+           },
+           'رجوع':function(){     
+            document.getElementsByClassName("gh")[0].click();        
+           }, 
+           'كلمه السر *tag':function(variable){ 
+            
+            let password= document.getElementsByClassName('inputt')[7];
+            variable=variable.replaceAll(" ", "");
+            variable=convert(variable);
+             password.value= variable;
+             $( '.inputt').keyup();
+            
+           },
+          
+           'الاسم الاول *tag':function(variable){  
+            let f=document.getElementsByClassName('inputt')[0];
+            variable=variable.replaceAll(" ", "");
+            f.value=variable; 
+            $( '.inputt').keyup();
+           },
+           'الاسم الثاني *tag':function(variable){  
+            let f=document.getElementsByClassName('inputt')[1];
+            variable=variable.replaceAll(" ", "");
+            f.value=variable;
+            $( '.inputt').keyup();
+           },
+           'رقم الطالب *tag':function(variable){  
+            let f=document.getElementsByClassName('inputt')[2];
+            variable=variable.replaceAll(" ", "");
+            f.value=variable;
+            $( '.inputt').keyup();
+           },
+           'التخصص الجامعي *tag':function(variable){  
+            let f=document.getElementsByClassName('inputt')[3];
+            f.value=variable;
+            $( '.inputt').keyup();
+           },
+           'البريد الالكتروني *tag':function(variable){  
+            let f=document.getElementsByClassName('inputt')[5];
+            variable=variable.replaceAll(" ", "");
+            variable=convert(variable);
+            f.value= variable;
+            $( '.inputt').keyup();
+           },
+           'الجنس *tag':function(variable){  
+            let f=document.getElementsByClassName('inputt')[6];
+            variable=variable.replaceAll(" ", "");
+            f.value=variable;
+            $( '.inputt').keyup();     
+           },
+           'رقم الهاتف *tag':function(variable){  
+            let f=document.getElementsByClassName('inputt')[4];
+            variable=variable.replaceAll(" ", "");
+            f.value=variable;
+            $( '.inputt').keyup();
+           },
+           'السجل المالي *tag':function(variable){  
+            let f=document.getElementsByClassName('inputt')[8];
+            variable=variable.replaceAll(" ", "");
+            f.value=variable;
+            $( '.inputt').keyup();
+           },
+           'اضافه':function(){  
+            document.getElementById('bb').click();
+             
+           },
+           'اظهار':function(){
+           document.getElementById('togglePassword').click(); 
+           },
+          'اخفاء':function(){
+         document.getElementById('togglePassword').click(); 
+          },
+
+
+          
+        
+          }
+         };
+         annyang.setLanguage('ar-PA');
+         // Add our commands to annyang
+         annyang.addCommands(commands);
+       
+         annyang.debug();
+        annyang.start({ autoRestart: true, continuous: true });
+
+
+
+   
+
+    $("#bb").click(function(){
+
+    var first=document.getElementsByClassName('inputt')[0].value;
+    var last=document.getElementsByClassName('inputt')[1].value;
+    var num=document.getElementsByClassName('inputt')[2].value;
+    var dept=document.getElementsByClassName('inputt')[3].value;
+    var email=document.getElementsByClassName('inputt')[5].value;
+    var gen=document.getElementsByClassName('inputt')[6].value;
+    var phone=document.getElementsByClassName('inputt')[4].value;
+    var passw=document.getElementsByClassName('inputt')[7].value;
+    var finance=document.getElementsByClassName('inputt')[8].value;
+      
+
+    var mailformat = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+    var  boolean=valid();       
+    
+     if(email.match(mailformat)&&boolean=="true"&& phone.length==10 && num.length ==9)
+    {
+        $.ajax({
+        url: "{{ url_for('creataccountajax') }}",
+        data: {'first' : first , 'last' :last , 'num':num,'dept':dept,'email' : email , 'gen' : gen , 'phone' : phone ,'passw' : passw , 'finance' : finance    },
+        type: 'POST',
+       success: function(response) {
+             console.log(response)
+      
+        if(response=="yes"){
+            document.getElementById('confirm').value="نم اضافة الطالب بنجاح";
+           document.getElementById('confirm').style="block";
+           document.getElementsByClassName('inputt')[0].value="";
+          document.getElementsByClassName('inputt')[1].value="";
+          document.getElementsByClassName('inputt')[2].value="";
+          document.getElementsByClassName('inputt')[3].value="";
+          document.getElementsByClassName('inputt')[5].value="";
+         document.getElementsByClassName('inputt')[6].value="";
+         document.getElementsByClassName('inputt')[7].value="";
+        document.getElementsByClassName('inputt')[8].value="";
+        document.getElementsByClassName('inputt')[4].value="";
+
+        }
+        else{
+        document.getElementById('confirm').value="الطالب موجدمود من قبل";
+        document.getElementById('confirm').style="block";
+        document.getElementsByClassName('inputt')[0].value="";
+          document.getElementsByClassName('inputt')[1].value="";
+          document.getElementsByClassName('inputt')[2].value="";
+          document.getElementsByClassName('inputt')[3].value="";
+          document.getElementsByClassName('inputt')[5].value="";
+         document.getElementsByClassName('inputt')[6].value="";
+         document.getElementsByClassName('inputt')[7].value="";
+        document.getElementsByClassName('inputt')[8].value="";
+        document.getElementsByClassName('inputt')[4].value="";
+        
+        }
+           
+
+       },
+      error: function(error) {
+       console.log(error) 
+       }
+       });  
+    }else{
+        document.getElementById('confirm').value="تاكد من قيم المدخلات";
+        document.getElementById('confirm').style="block";
+    }
+
+                             
+     });
+    
+ 
+
+       
+     
+      const togglePassword = document.querySelector("#togglePassword");
+      const password = document.querySelector("#password");
+    
+      togglePassword.addEventListener("click", function () {
+          // toggle the type attribute
+          const type = password.getAttribute("type") === "password" ? "text" : "password";
+          password.setAttribute("type", type);
+          
+          // toggle the icon
+          this.classList.toggle("bi-eye");
+      });
+    
+     
+
+    
+  
+    
+      const togglePassword2 = document.querySelector("#togglePassword2");
+      const password2 = document.querySelector("#password2");
+    
+      togglePassword2.addEventListener("click", function () {
+          // toggle the type attribute
+          const type2 = password2.getAttribute("type") === "password" ? "text" : "password";
+          password2.setAttribute("type", type2);
+          
+          // toggle the icon
+          this.classList.toggle("bi-eye");
+      });
+    
+    
+        // Get the modal
+        var modal4 = document.getElementById('id01');
+        var modal5 = document.getElementById('id02');
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal4 || event.target==modal5) {
+                modal4.style.display = "none";  modal5.style.display = "none";
+            }
+        
+        }
+     
+        function valid(){
+            var myInput = document.getElementById("password");
+         var lowerCaseLetters = /[a-z]/g;
+         var upperCaseLetters = /[A-Z]/g;
+          var numbers = /[0-9]/g;
+          var characters=/[!,#,$,*,_,-,@,.]/g;
+         if(myInput.value.match(characters)&&myInput.value.match(lowerCaseLetters) && myInput.value.match(upperCaseLetters)&&myInput.value.match(numbers)&& myInput.value.length >= 8) {  
+           return "true"
+         }
+         else{
+             return "false"
+         }
+        }
+
+
+          function checkAndChange(){
+        
+        if(first==""||last==""||num==""||dept==""||email==""||gen==""||phone==""||passw==""||finance==""){
+            $('button').prop('disabled', true);
+            $(".yess").css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+        $(".yess").css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)");   
+            
+         
+        }
+        else{
+            console.log("hjg")
+            $('button').prop('disabled', false)
+            $(".yess").css("background-color","#517362");
+            $(".yess").css("border","2px solid #fff");
+           
+    
+        } }
+        $("input").keyup(function(){
+        var first2=document.getElementsByClassName('inputt')[0].value;
+        var last2=document.getElementsByClassName('inputt')[1].value;
+        var num2=document.getElementsByClassName('inputt')[2].value;
+        var dept2=document.getElementsByClassName('inputt')[3].value;
+        var email2=document.getElementsByClassName('inputt')[5].value;
+        var gen2=document.getElementsByClassName('inputt')[6].value;
+        var phone2=document.getElementsByClassName('inputt')[4].value;
+        var passw2=document.getElementsByClassName('inputt')[7].value;
+        var finance2=document.getElementsByClassName('inputt')[8].value;
+        var yess2=document.getElementsByClassName('yess');
+           
+            first=first2;
+            last=last2;
+            num=num2;
+            dept=dept2;
+            email=email2;
+            gen=gen2;
+            phone=phone2;
+            passw=passw2;
+            finance=finance2;
+            yess=yess2;
+           
+         
+            checkAndChange();
+        })
+
+
+
+        function convert(variable){
+        
+        if(variable.includes("تعجب")){
+          
+          variable=variable.replaceAll("تعجب","!")
+         }
+       
+        if(variable.includes("سلم")){
+          variable=variable.replaceAll("سلم","#")
+          
+        }
+        if(variable.includes("دولارساين")){
+          variable=variable.replaceAll("دولارساين", "$")
+        }        
+        if(variable.includes("ستار")){
+          variable=variable.replaceAll("ستار", "*") 
+        }
+        if(variable.includes("اندرسكور")){
+          variable=variable.replaceAll("اندرسكور", "_")
+          
+        }
+        if(variable.includes("سلاش")){
+          variable=variable.replaceAll("سلاش","-")
+        }
+        if(variable.includes("هوتميل")){
+          variable=variable.replaceAll("هوتميل","hotmail")        
+         }
+         if(variable.includes("جيميل")){
+           variable=variable.replaceAll("جيميل","gmail")
+         }
+        if(variable.includes("كابيتالاتش")){
+          variable=variable.replaceAll("كابيتالاتش","H")
+        }
+        if(variable.includes("اتش")){
+          variable=variable.replaceAll("اتش","h")
+        }
+        if(variable.includes("ات")){
+          variable=variable.replaceAll("ات","@")
+        } 
+       if(variable.includes("دوت")){
+           variable=variable.replaceAll("دوت",".")
+         }
+         if(variable.includes("كوم")){
+           variable=variable.replaceAll("كوم","com")
+         }
+         if(variable.includes("كابيتالكيو")){
+           variable=variable.replaceAll("كابيتالكيو","Q")
+         }
+         if(variable.includes("كابيتالدبليو")){
+          variable=variable.replaceAll("كابيتالدبليو","W")
+        }
+        if(variable.includes("كابيتالايه")){
+          variable=variable.replaceAll("كابيتالايه","A") 
+        }
+        if(variable.includes("كابيتالار")){
+          variable=variable.replaceAll("كابيتالار", "R")
+        }
+        if(variable.includes("كابيتالتي")){
+          variable=variable.replaceAll("كابيتالتي", "T") 
+        }
+        if(variable.includes("كابيتالواي")){
+          variable=variable.replaceAll("كابيتالواي", "y")
+        }
+        if(variable.includes("كابيتاليو")){
+          variable=variable.replaceAll("كابيتاليو","U")
+        }
+        if(variable.includes("كابيتالاي")){
+          variable=variable.replaceAll("كابيتالاي","I")
+        }
+        if(variable.includes("كابيتالاو")){
+          variable=variable.replaceAll("كابيتالاو","O")
+        }
+        if(variable.includes("كابيتالهي","كابيتالبهيه","كابيتالبهي")){
+          variable=variable.replaceAll("كابيتالبهيه","P")
+          variable=variable.replaceAll("كابيتالبهي","P")
+          variable=variable.replaceAll("كابيتالهي","P")
+        }
+        if(variable.includes("كابيتالاي")){
+          variable=variable.replaceAll("كابيتالاي","E")
+        }
+        if(variable.includes("كابيتالاس")){
+          variable=variable.replaceAll("كابيتالاس","S")
+        }
+        if(variable.includes("كابيتالدي")){
+          variable=variable.replaceAll("كابيتالدي","D")
+        } 
+        if(variable.includes("كابيتالاف")){
+          variable=variable.replaceAll("كابيتالاف","F")
+        }
+        if(variable.includes("كابيتالجي")){
+          variable=variable.replaceAll("كابيتالجي","G")
+        }
+       
+        if(variable.includes("كابيتالجاي")){
+          variable=variable.replaceAll("كابيتالجاي","J")
+        }
+        if(variable.includes("كابيتالكي","كابيتالكيك")){
+          variable=variable.replaceAll("كابيتالكيك","K")
+          variable=variable.replaceAll("كابيتالكي","K")
+        }
+        if(variable.includes("كابيتالال")){
+          variable=variable.replaceAll("كابيتالال","L")
+        }
+        if(variable.includes("كابيتالام")){
+          variable=variable.replaceAll("كابيتالام","M")
+        }
+        if(variable.includes("كابيتالان")){
+          variable=variable.replaceAll("كابيتالان","N")
+        }
+        if(variable.includes("كابيتالبي")){
+          variable=variable.replaceAll("كابيتالبي","B")
+        } 
+        if(variable.includes("كابيتالفي")){
+          variable=variable.replaceAll("كابيتالفي","V")
+        }
+        if(variable.includes("كابيتالسي")){ 
+          variable=variable.replaceAll("كابيتالسي","C")
+        }
+        if(variable.includes("كابيتالاكس")){
+          variable=variable.replaceAll("كابيتالاكس","X")
+        }
+        if(variable.includes("كابيتالزد")){
+          variable=variable.replaceAll("كابيتالزد","Z")
+        }
+        
+        if(variable.includes("كيو")){
+           variable=variable.replaceAll("كيو","q")
+         }
+        if(variable.includes("دبليو")){
+          variable=variable.replaceAll("دبليو","w")
+        }
+        if(variable.includes("ايه")){
+          variable=variable.replaceAll("ايه","a") 
+        }
+        if(variable.includes("ار")){
+          variable=variable.replaceAll("ار", "r")
+        }
+        if(variable.includes("تي")){
+          variable=variable.replaceAll("تي", "t") 
+        }
+        if(variable.includes("واي")){
+          variable=variable.replaceAll("واي", "y")
+        }
+        if(variable.includes("يو")){
+          variable=variable.replaceAll("يو","u")
+        }
+        
+        if(variable.includes("او")){
+          variable=variable.replaceAll("او","o")
+        }
+        if(variable.includes("هي","هيه","بهيه")){
+          variable=variable.replaceAll("بهيه","p")
+          variable=variable.replaceAll("هيه","p")
+          variable=variable.replaceAll("هي","p")
+        }
+       
+        if(variable.includes("اس")){
+          variable=variable.replaceAll("اس","s")
+        }
+        if(variable.includes("دي")){
+          variable=variable.replaceAll("دي","d")
+        }
+        if(variable.includes("اف")){
+          variable=variable.replaceAll("اف","f")
+        }
+        if(variable.includes("جي")){
+          variable=variable.replaceAll("جي","g")
+        }
+        if(variable.includes("جاي")){
+          variable=variable.replaceAll("جاي","j")
+        }
+        if(variable.includes("اي")){
+          variable=variable.replaceAll("اي","e")
+        }
+        if(variable.includes("اي")){
+          variable=variable.replaceAll("اي","i")
+        }
+        if(variable.includes("كي","كيك")){
+          variable=variable.replaceAll("كيك","k")
+          variable=variable.replaceAll("كي","k")
+        }
+        if(variable.includes("ال")){
+          variable=variable.replaceAll("ال","l")
+        }
+        if(variable.includes("ام")){
+          variable=variable.replaceAll("ام","m")
+        }
+        if(variable.includes("ان")){
+          variable=variable.replaceAll("ان","n")
+        }
+        if(variable.includes("بي")){
+          variable=variable.replaceAll("بي","b")
+        }
+        if(variable.includes("في")){
+          variable=variable.replaceAll("في","v")
+        }
+        if(variable.includes("سي")){
+          variable=variable.replaceAll("سي","c")
+        }
+        if(variable.includes("اكس")){
+          variable=variable.replaceAll("اكس","x")
+        }
+        if(variable.includes("زد")){
+          variable=variable.replaceAll("زد","z")
+        }
+       return variable
+      }
+
+
+
+
+
+
+
+
+        </script>
+     
+       
+    
+</body>
+</html>

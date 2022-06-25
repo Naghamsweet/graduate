@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script> 
+      <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <title>ادمن</title> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+ 
+<body>
+  <section class="header">
+      <nav>
+          <!-- <a href="index.html"><img src="images/Logo.jpg"></a> -->
+          <div class="nav-links15" id="navLinks">
+            <ul>
+              <li><a href="{{ url_for('login') }}">تسجيل الخروج</a><i class="vv fa fa-sign-out" ></i></li>
+               
+                <li><a href="{{ url_for('home') }}">الصفحة الرئيسية</a><i class="vv fa fa-home" ></i></li>
+
+           
+
+          </ul>
+      </div>
+  </nav>
+ 
+<nav>
+  <div class="nav-links2" id="navLinks2">
+
+    <div class="sidebar">
+      <div class="d">
+      <div class="icon">
+       
+            <form  action="{{ url_for('createstudent') }}" method="POST">
+             <button type="submit"class="bbb"><i class="fa fa-user-circle-o"></i>
+              <br><br><br><h5>انشاء حساب للطالب</h5>
+              </button>
+              </form></div>
+          
+              <div class="icon1">
+        <form action="{{ url_for('editstudent') }}" method="POST">
+           <button type="submit"class="bbb"><i class="fa fa-pencil"></i>
+            <br><br><br><h5>تعديل بيانات الطالب</h5>
+          </button>
+          </form></div>
+
+          <div class="icon2">
+            <form action="{{ url_for('course') }}" method="POST">
+               <button type="submit"class="bbb2"><i class="fa fa-book"></i>
+                <br><br><br><h5>تعديل مادة</h5>
+              </button>
+              </form></div>
+            </div>
+          </div>
+          </nav>
+      </section>
+
+<script>
+  if(annyang) {
+          var commands = {
+           
+           'انشاء حساب للطالب':function(){
+             document.getElementsByClassName("bbb")[0].click();
+     
+            },
+           'تعديل بيانات الطالب':function(){
+             document.getElementsByClassName("bbb")[1].click();
+            },
+            'تعديل ماده':function(){
+             document.getElementsByClassName("bbb2")[0].click();
+            },
+           
+            'تسجيل الخروج':function(){     
+             document.getElementsByTagName("a")[0].click();
+             
+           },
+           'الصفحه الرئيسيه':function(){     
+             document.getElementsByTagName("a")[1].click();
+             
+           },
+          
+          
+           }
+         };
+         annyang.setLanguage('ar-PA');
+         // Add our commands to annyang
+         annyang.addCommands(commands);
+       
+         annyang.debug();
+        annyang.start({ autoRestart: true, continuous: true });
+
+
+
+    </script>
+
+
+    
+</body>
+</html>

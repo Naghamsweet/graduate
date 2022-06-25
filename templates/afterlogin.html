@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <title>afterLogin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <section class="header">
+    <nav>
+        <!-- <a href="index.html"><img src="images/Logo.jpg"></a> -->
+        <div class="nav-links1" id="navLinks">
+            <ul>
+                <li><a href="{{ url_for('login') }}">تسجيل الخروج</a><i class="fa fa-sign-out" ></i></li>
+               
+                <li><a href="{{ url_for('home') }}">الصفحة الرئيسية</a><i class="fa fa-home" ></i></li>
+
+                <span class="span" onclick="openNav()"><i class="fa fa-user" ></i> </span>
+                
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                   <br><br>
+                   {% for row in value %} 
+                    <a href="#">اسم الطالب: {{row[1]}} {{row[2]}}</a>
+                    <a href="#">الرقم الجامعي :{{row[0]}}</a>
+                    <a href="#">التخصص :{{row[7]}}</a>
+                    
+                  </div>
+                  
+
+
+            </ul>
+        </div>
+    </nav>
+   
+<nav>
+    <div class="nav-links2" id="navLinks2">
+     
+        </ul>
+        <div class="sidebar">
+            <div class="d">
+              <div class="icon">
+                <form  action="{{ url_for('StudentSchedule') }}" method="POST">
+                  <input style="display: none" type="text" name="y" value="{{row[0]}}" id="y" >
+                  <button type="submit"class="bbb"><i class="fa fa-table"></i>
+                    <br><br><br>
+                    <h5>جدول الطالب</h5>
+                  </button>
+                  </form></div>
+              
+              <div class="icon1">
+            <form action="{{ url_for('StudentRegistration') }}" method="POST">
+              <input style="display: none" type="text" name="x" value="{{row[0]}}" id="x" >
+              <input style="display: none" type="text" name="y" value="{{row[7]}}" id="y" >
+              <button type="submit"class="bbb1"><i class="fa fa-registered"></i>
+                <br><br><br>
+                <h5>التسجيل الالكتروني</h5>
+              </button>
+              </form></div>
+
+              <div class="icon2">
+                <form action="{{ url_for('StudentInfo') }}" method="POST">
+                  <input style="display: none" type="text" name="y" value="{{row[0]}}" id="y" >
+                  <button type="submit"class="bbb2"> <i class="fa fa-pencil"></i>
+                  <br><br><br>
+                  <h5>تعديل بيانات الطالب</h5></button>
+                </form></div>
+              
+                
+                <div class="icon3">
+                  <form action="{{ url_for('CourseSchedule') }}" method="POST">
+                    <input style="display: none" type="text" name="y" value="{{row[0]}}" id="y" >
+                    <button type="submit"class="bbb3"> <i class="fa fa-registered"></i>
+                    <br><br><br>
+                    <h5>الجدول الدراسي</h5> </button>
+                  </form></div>
+               
+                  <div class="icon4">
+                    <form action="{{ url_for('financial') }}" method="POST">
+                      <input style="display: none" type="text" name="x" value="{{row[0]}}" id="x" >
+                      <button type="submit"class="bbb4"> <i class="fa fa-usd"></i>
+                      <br><br><br>
+                      <h5>السجل المالي</h5> </button>
+                    </form></div>
+       
+                    
+                  <div class="icon5">
+                    <form action="{{ url_for('chgpass') }}" method="POST">
+                      <input style="display: none" type="text" name="x" value="{{row[0]}}" id="x" >
+                      <button type="submit"class="bbb5"><i class="fa fa-key"></i>
+                      <br><br><br>
+                      <h5>تعديل كلمة السر</h5> </button>
+                    </form></div>
+
+                         
+        </div>
+    </div>
+</div>
+</nav>
+</section>
+
+    
+</body>
+  <script>
+     var navLinks= document.getElementById("navLinks");
+
+function showMenu(){
+    navLinks.style.right="0";
+}
+function hideMenu(){
+    navLinks.style.right="-200px";
+}
+
+// Get the modal
+var modal = document.getElementById('id02');
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal1) {
+        modal.style.display = "none";
+    }
+}
+function openNav() {
+document.getElementById("mySidenav").style.width = "250px";
+document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+document.getElementById("mySidenav").style.width = "0";
+document.getElementById("main").style.marginLeft= "0";
+}
+    if(annyang) {
+          var commands = {
+            'جدول الطالب':function(){     
+             document.getElementsByClassName("bbb")[0].click();
+             
+           },
+           
+            'التسجيل الالكتروني':function(){
+            document.getElementsByClassName("bbb1")[0].click();
+     
+           },
+           'السجل المالي':function(){
+             document.getElementsByClassName("bbb4")[0].click();
+     
+            },
+           'تعديل بيانات الطالب':function(){
+             document.getElementsByClassName("bbb2")[0].click();
+            },
+            'الجدول الدراسي':function(){
+             document.getElementsByClassName("bbb3")[0].click();
+            },
+            'تعديل كلمه السر':function(){
+             document.getElementsByClassName("bbb5")[0].click();
+            },
+            'تسجيل الخروج':function(){     
+             document.getElementsByTagName("a")[0].click();
+             
+           },
+           'الصفحه الرئيسيه':function(){     
+             document.getElementsByTagName("a")[1].click();
+             
+           },
+          
+           'رجوع':function(){     
+            window.location.replace("/login")
+             
+           },
+           'اغلاق':function(){     
+            document.getElementsByClassName("closebtn")[0].click();
+             
+           },
+           'معلوماتي':function(){     
+            document.getElementsByClassName("span")[0].click();
+             
+           },
+           }
+         };
+         annyang.setLanguage('ar-PA');
+         // Add our commands to annyang
+         annyang.addCommands(commands);
+       
+         annyang.debug();
+        annyang.start({ autoRestart: true, continuous: true });
+
+
+
+    // Get the modal
+    var modal = document.getElementById('id02');
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal1) {
+            modal.style.display = "none";
+        }
+    }
+  </script>
+   
+   {% endfor %}
+</html>

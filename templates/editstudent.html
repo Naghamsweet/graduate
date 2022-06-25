@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <meta name="viewport" content="with=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />       
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <title>تعديل بيانات الطالب</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+  $( document ).ready(function() {
+ var id=document.getElementsByClassName('inputt')[0].value;
+ var pass=document.getElementsByClassName('inputt')[1].value;
+var yeess=document.getElementsByClassName('yeess');
+$('.yeess').css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+$('.yeess').css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)"); 
+$('.yeess').css("border","2px solid #fff"); 
+  var checkAndChange =function(){
+     
+ if(id==""||pass==""){
+     $('.yeess').prop('disabled', true);
+     $('.yeess').css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+     $('.yeess').css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)");   
+  
+ }
+ else{
+    console.log(id,pass)
+     $('.yeess').prop('disabled', false);
+     $('.yeess').css("background-color","#4f646f");
+     $('.yeess').css("border","2px solid #fff");
+
+ } }
+ $("input").keyup(function(){
+ var id2=document.getElementsByClassName('inputt')[0].value;
+ var pass2=document.getElementsByClassName('inputt')[1].value;
+ var yeess2=document.getElementsByClassName('yeess');
+    
+     id=id2;
+     pass=pass2;
+     yeess=yeess2;
+    
+  
+     checkAndChange();
+ });
+
+  });
+       </script>  
+
+</head>
+    <body>
+        <input style="display:none" type="text" value="" id="confirm">
+        <section class="header">
+            <nav>
+                <!-- <a href="index.html"><img src="images/Logo.jpg"></a> -->
+                <div class="nav-links15" id="navLinks">
+                    <ul>
+                        <li>
+                            <form  action="{{ url_for('admin') }}" method="POST">
+                                <!-- <input style="display: none" type="text" name="number" value="12" id="number" > -->
+                                <button type="submit" class="gh">رجوع</button><i class="vv fa fa-backward"></i>
+                                </form></li>
+                                
+                                <li><a href="{{ url_for('login') }}">تسجيل الخروج</a><i class="vv fa fa-sign-out" ></i></li>
+                               
+                                <li><a href="{{ url_for('home') }}">الصفحة الرئيسية</a><i class="vv fa fa-home" ></i></li>
+                     
+                    
+                 
+                 
+                    </ul>
+                </div>
+            </nav>
+<br>
+
+<!-- <center><h1 class="h1 ">تعديل بيانات الطالب</h1></center> -->
+
+        <br>
+    <center><input type="text" class="input77" id="myInput1" onkeyup="myFunction1()" placeholder="البحث باستخدام رقم الطالب "></center>
+
+<br>
+
+         <center>  <table id="table" class="table111" >
+                
+                <tr>
+                    <th>كلمة السر</th>
+                    <th>رقم الهاتف</th>
+                    <th>الايميل</th>
+                    <th>اسم الطالب</th>
+                    <th>رقم الطالب</th>
+
+                </tr>
+                <tbody id="student_body">
+                </tbody>
+               
+            </table></center> 
+       <br><br>
+           
+            <div class="admine">
+                <table class="adminEdit">
+                    <div class="tt">
+                        <!-- <tr>
+                            <td> <input type="text"class="inputt" name="country" id="nm"></td>
+                            <td>:اسم الطالب</td>
+                        </tr> -->
+                    <tr>
+                        <td><input type="text" class="inputt" name="mNumber" id="id" placeholder="رقم الطالب"></td>
+                        <!-- <td>:رقم الطالب</td>  -->
+                    </tr>
+                   
+                        <tr>
+                            <td><i class="bi bi-eye-slash" id="togglePassword"></i> <input type="password" placeholder="كلمة السر" class="inputt" name="epass" id="epass"> </td>
+                            <!-- <td>:كلمةالسر</td> -->
+                        </tr>
+                         
+                </table>
+
+               <center> <button  id="gg" class="yeess" disabled >تعديل</button><br><br>
+            </div>
+                        <!-- <input type="text" id="FN" name="FN" value="اسيل رجب" readonly><br><br> -->
+                                    
+       
+
+               
+
+        <!-- link JavaScript -->
+        <script >
+              
+     if(annyang) {
+          var commands = {
+           'تسجيل الخروج':function(){     
+             document.getElementsByTagName("a")[0].click();
+             
+           },
+           'الصفحه الرئيسيه':function(){     
+             document.getElementsByTagName("a")[1].click();
+             
+           },
+           'رجوع':function(){     
+            document.getElementsByClassName("gh")[0].click();        
+           }, 
+           'كلمه السر *tag':function(variable){ 
+            
+            let password= document.getElementsByClassName('inputt')[1];
+            variable=variable.replaceAll(" ", "");
+            variable=convert(variable);
+             password.value= variable;
+             $( '.inputt').keyup();
+            
+           },
+          
+           'رقم الطالب *tag':function(variable){  
+            let f=document.getElementsByClassName('inputt')[0];
+            variable=variable.replaceAll(" ", "");
+            f.value=variable;
+            $( '.inputt').keyup();
+           },
+          
+           'تعديل':function(){  
+            document.getElementById('gg').click();
+             
+           },
+           'اظهار':function(){
+           document.getElementById('togglePassword').click(); 
+           },
+          'اخفاء':function(){
+         document.getElementById('togglePassword').click(); 
+          },
+          'البحث باستخدام رقم الطالب *tag':function(variable){
+        let id=document.getElementById('myInput1');
+        variable=variable.replaceAll(" ", "");
+        id.value=variable;
+        myFunction1();       
+       },
+
+          'حذف الرقم':function(){
+            let id=document.getElementById('myInput1');
+            id.value="";
+            myFunction1();                 
+          },
+        }
+         };
+         annyang.setLanguage('ar-PA');
+         // Add our commands to annyang
+         annyang.addCommands(commands);
+       
+         annyang.debug();
+        annyang.start({ autoRestart: true, continuous: true });
+            
+ 
+            function myFunction1() {
+               // Declare variables
+               var input, filter, table, tr, td, i, txtValue;
+               input = document.getElementById("myInput1");
+               filter = input.value.toUpperCase();
+               table = document.getElementById("table");
+               tr = table.getElementsByTagName("tr");
+
+             
+               // Loop through all table rows, and hide those who don't match the search query
+               for (i = 0; i < tr.length; i++) {
+                 td = tr[i].getElementsByTagName("td")[4];
+                 if (td) {
+                   txtValue = td.textContent || td.innerText;
+                   if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                     tr[i].style.display = "";
+                   } else {
+                     tr[i].style.display = "none";
+                   }
+                 }
+               }}
+                        
+                        
+            // edit the row
+            function editRow(){
+                table.rows[rIndex].cells[1].innerHTML = document.getElementById("ph").value;
+                table.rows[rIndex].cells[2].innerHTML = document.getElementById("em").value;
+                // table.rows[rIndex].cells[3].innerHTML = document.getElementById("nm").value;
+                table.rows[rIndex].cells[4].innerHTML = document.getElementById("id").value;
+                table.rows[rIndex].cells[0].innerHTML = document.getElementById("epass").value;
+           
+            }
+            
+            // Data Update Table Here
+            function editTableDisplay(){
+                document.querySelector('.editTable').setAttribute('style', 'display: block;')
+            }
+           
+           
+           
+           
+           
+                   const togglePassword = document.querySelector("#togglePassword");
+                   const password = document.querySelector("#epass");
+           
+                   togglePassword.addEventListener("click", function () {
+                       // toggle the type attribute
+                       const type = password.getAttribute("type") === "password" ? "text" : "password";
+                       password.setAttribute("type", type);
+                       
+                       // toggle the icon
+                       this.classList.toggle("bi-eye");
+                   });
+
+ $( document ).ready(function() {    
+  
+  $.ajax({
+
+    url: "{{ url_for('student_ajax') }}",
+    type: 'POST',
+    success: function(response) {
+        var trHTML = '';
+        console.log(response)
+        $('#student_body').html(trHTML);
+        for (var i = 0; i < response.length; ++i){
+            trHTML +=
+            '<tr><td>'
+            + (response[i]).pass
+            + '</td><td>'
+            + (response[i]).phone
+            + '</td><td>'
+            + (response[i]).email
+            + '</td><td>'
+            + (response[i]).name
+            + '</td ><td>'
+            + (response[i]).id
+            + '</td></tr>';
+            };
+            $('#student_body').append(trHTML);
+         console.log("one")
+          }, 
+    error: function(error) {
+    console.log(error);
+    }
+    });
+    });
+
+document.getElementById("gg").addEventListener("click", function(evt) {  
+    
+   var id=document.getElementsByClassName('inputt')[0].value;
+    var passw=document.getElementsByClassName('inputt')[1].value;
+    var  boolean=valid(); 
+if(boolean=="true"){
+    $.ajax({
+   url: "{{ url_for('editstudent_ajax') }}",
+   data: {'id' : id,'passw':passw},
+   type: 'POST',
+    success: function(response) {
+        
+        if(response[0]=="true"){
+            document.getElementById('confirm').value="تم التعديل";
+           document.getElementById('confirm').style="block";
+           id="";
+           passw="";
+        }
+        else{
+            document.getElementById('confirm').value="الطالب غير موجود";
+           document.getElementById('confirm').style="block";
+           id="";
+           passw="";
+        }
+        
+        
+        var trHTML = '';
+        
+        $('#student_body').html(trHTML);
+        for (var i = 0; i < response[1].length; ++i){
+            trHTML +=
+            '<tr><td>'
+            + (response[1][i]).pass
+            + '</td><td>'
+            + (response[1][i]).phone
+            + '</td><td>'
+            + (response[1][i]).email
+            + '</td><td>'
+            + (response[1][i]).name
+            + '</td ><td>'
+            + (response[1][i]).id
+            + '</td></tr>';
+            };
+            $('#student_body').append(trHTML);
+         }, 
+      error: function(error) {
+      console.log(error);
+      }
+     }); 
+    }else{
+        document.getElementById('epass').focus();
+        
+    }
+
+                             
+     });
+
+    
+
+    function valid(){
+            var myInput = document.getElementById("epass");
+         var lowerCaseLetters = /[a-z]/g;
+         var upperCaseLetters = /[A-Z]/g;
+          var numbers = /[0-9]/g;
+          var characters=/[!,#,$,*,_,-,@,.]/g;
+         if(myInput.value.match(characters) && myInput.value.match(lowerCaseLetters) && myInput.value.match(upperCaseLetters)&&myInput.value.match(numbers)&& myInput.value.length >= 8) {  
+           return "true"
+         }
+         else{
+             return "false"
+         }
+        }
+
+        
+        function convert(variable){
+        
+        if(variable.includes("تعجب")){
+          
+          variable=variable.replaceAll("تعجب","!")
+         }
+       
+        if(variable.includes("سلم")){
+          variable=variable.replaceAll("سلم","#")
+          
+        }
+        if(variable.includes("دولارساين")){
+          variable=variable.replaceAll("دولارساين", "$")
+        }        
+        if(variable.includes("ستار")){
+          variable=variable.replaceAll("ستار", "*") 
+        }
+        if(variable.includes("اندرسكور")){
+          variable=variable.replaceAll("اندرسكور", "_")
+          
+        }
+        if(variable.includes("سلاش")){
+          variable=variable.replaceAll("سلاش","-")
+        }
+        if(variable.includes("هوتميل")){
+          variable=variable.replaceAll("هوتميل","hotmail")        
+         }
+         if(variable.includes("جيميل")){
+           variable=variable.replaceAll("جيميل","gmail")
+         }
+        if(variable.includes("كابيتالاتش")){
+          variable=variable.replaceAll("كابيتالاتش","H")
+        }
+        if(variable.includes("اتش")){
+          variable=variable.replaceAll("اتش","h")
+        }
+        if(variable.includes("ات")){
+          variable=variable.replaceAll("ات","@")
+        } 
+       if(variable.includes("دوت")){
+           variable=variable.replaceAll("دوت",".")
+         }
+         if(variable.includes("كوم")){
+           variable=variable.replaceAll("كوم","com")
+         }
+         if(variable.includes("كابيتالكيو")){
+           variable=variable.replaceAll("كابيتالكيو","Q")
+         }
+         if(variable.includes("كابيتالدبليو")){
+          variable=variable.replaceAll("كابيتالدبليو","W")
+        }
+        if(variable.includes("كابيتالايه")){
+          variable=variable.replaceAll("كابيتالايه","A") 
+        }
+        if(variable.includes("كابيتالار")){
+          variable=variable.replaceAll("كابيتالار", "R")
+        }
+        if(variable.includes("كابيتالتي")){
+          variable=variable.replaceAll("كابيتالتي", "T") 
+        }
+        if(variable.includes("كابيتالواي")){
+          variable=variable.replaceAll("كابيتالواي", "y")
+        }
+        if(variable.includes("كابيتاليو")){
+          variable=variable.replaceAll("كابيتاليو","U")
+        }
+        if(variable.includes("كابيتالاي")){
+          variable=variable.replaceAll("كابيتالاي","I")
+        }
+        if(variable.includes("كابيتالاو")){
+          variable=variable.replaceAll("كابيتالاو","O")
+        }
+        if(variable.includes("كابيتالهي","كابيتالبهيه","كابيتالبهي")){
+          variable=variable.replaceAll("كابيتالبهيه","P")
+          variable=variable.replaceAll("كابيتالبهي","P")
+          variable=variable.replaceAll("كابيتالهي","P")
+        }
+        if(variable.includes("كابيتالاي")){
+          variable=variable.replaceAll("كابيتالاي","E")
+        }
+        if(variable.includes("كابيتالاس")){
+          variable=variable.replaceAll("كابيتالاس","S")
+        }
+        if(variable.includes("كابيتالدي")){
+          variable=variable.replaceAll("كابيتالدي","D")
+        } 
+        if(variable.includes("كابيتالاف")){
+          variable=variable.replaceAll("كابيتالاف","F")
+        }
+        if(variable.includes("كابيتالجي")){
+          variable=variable.replaceAll("كابيتالجي","G")
+        }
+       
+        if(variable.includes("كابيتالجاي")){
+          variable=variable.replaceAll("كابيتالجاي","J")
+        }
+        if(variable.includes("كابيتالكي","كابيتالكيك")){
+          variable=variable.replaceAll("كابيتالكيك","K")
+          variable=variable.replaceAll("كابيتالكي","K")
+        }
+        if(variable.includes("كابيتالال")){
+          variable=variable.replaceAll("كابيتالال","L")
+        }
+        if(variable.includes("كابيتالام")){
+          variable=variable.replaceAll("كابيتالام","M")
+        }
+        if(variable.includes("كابيتالان")){
+          variable=variable.replaceAll("كابيتالان","N")
+        }
+        if(variable.includes("كابيتالبي")){
+          variable=variable.replaceAll("كابيتالبي","B")
+        } 
+        if(variable.includes("كابيتالفي")){
+          variable=variable.replaceAll("كابيتالفي","V")
+        }
+        if(variable.includes("كابيتالسي")){ 
+          variable=variable.replaceAll("كابيتالسي","C")
+        }
+        if(variable.includes("كابيتالاكس")){
+          variable=variable.replaceAll("كابيتالاكس","X")
+        }
+        if(variable.includes("كابيتالزد")){
+          variable=variable.replaceAll("كابيتالزد","Z")
+        }
+        
+        if(variable.includes("كيو")){
+           variable=variable.replaceAll("كيو","q")
+         }
+        if(variable.includes("دبليو")){
+          variable=variable.replaceAll("دبليو","w")
+        }
+        if(variable.includes("ايه")){
+          variable=variable.replaceAll("ايه","a") 
+        }
+        if(variable.includes("ار")){
+          variable=variable.replaceAll("ار", "r")
+        }
+        if(variable.includes("تي")){
+          variable=variable.replaceAll("تي", "t") 
+        }
+        if(variable.includes("واي")){
+          variable=variable.replaceAll("واي", "y")
+        }
+        if(variable.includes("يو")){
+          variable=variable.replaceAll("يو","u")
+        }
+        
+        if(variable.includes("او")){
+          variable=variable.replaceAll("او","o")
+        }
+        if(variable.includes("هي","هيه","بهيه")){
+          variable=variable.replaceAll("بهيه","p")
+          variable=variable.replaceAll("هيه","p")
+          variable=variable.replaceAll("هي","p")
+        }
+       
+        if(variable.includes("اس")){
+          variable=variable.replaceAll("اس","s")
+        }
+        if(variable.includes("دي")){
+          variable=variable.replaceAll("دي","d")
+        }
+        if(variable.includes("اف")){
+          variable=variable.replaceAll("اف","f")
+        }
+        if(variable.includes("جي")){
+          variable=variable.replaceAll("جي","g")
+        }
+        if(variable.includes("جاي")){
+          variable=variable.replaceAll("جاي","j")
+        }
+        if(variable.includes("اي")){
+          variable=variable.replaceAll("اي","e")
+        }
+        if(variable.includes("اي")){
+          variable=variable.replaceAll("اي","i")
+        }
+        if(variable.includes("كي","كيك")){
+          variable=variable.replaceAll("كيك","k")
+          variable=variable.replaceAll("كي","k")
+        }
+        if(variable.includes("ال")){
+          variable=variable.replaceAll("ال","l")
+        }
+        if(variable.includes("ام")){
+          variable=variable.replaceAll("ام","m")
+        }
+        if(variable.includes("ان")){
+          variable=variable.replaceAll("ان","n")
+        }
+        if(variable.includes("بي")){
+          variable=variable.replaceAll("بي","b")
+        }
+        if(variable.includes("في")){
+          variable=variable.replaceAll("في","v")
+        }
+        if(variable.includes("سي")){
+          variable=variable.replaceAll("سي","c")
+        }
+        if(variable.includes("اكس")){
+          variable=variable.replaceAll("اكس","x")
+        }
+        if(variable.includes("زد")){
+          variable=variable.replaceAll("زد","z")
+        }
+       return variable
+      }
+
+
+
+              
+        </script>
+    </body>
+</html>

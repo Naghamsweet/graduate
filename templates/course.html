@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />       
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+        <title>المواد</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>
+            $( document ).ready(function() {
+     var std_id=document.getElementById('stu').value;
+     var cell2=document.getElementById('cell2').value;
+     var cell3=document.getElementById('cell3').value;
+     var cell4=document.getElementById('cell4').value;
+     var cell5=document.getElementById('cell5').value;
+     
+     var cell7=document.getElementById('cell7').value;
+     var cell8=document.getElementById('cell8').value;
+     var em=document.getElementById('em').value;
+     var ph=document.getElementById('ph').value;
+     var epass=document.getElementById('epass').value;
+     var id=document.getElementById('id').value;
+     var num=document.getElementById('num').value;
+     var n=document.getElementById('n').value;
+     var addd=document.getElementsByClassName('addsectionn1');
+     var add=document.getElementsByClassName('addsectionn3');
+     var adddd=document.getElementsByClassName('addsectionn2');
+       
+     $(".addsectionn3").css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+     $(".addsectionn3").css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)");
+     $(".addsectionn3").css("border","solid 1px  #a79749");
+     $(".addsectionn1").css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+     $(".addsectionn1").css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)");
+     $(".addsectionn1").css("border","solid 1px #45c759");
+     $(".addsectionn2").css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+     $(".addsectionn2").css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)");
+     $(".addsectionn2").css("border","solid 1px #4881c3");
+     var checkAndChange =function(){
+    
+       if(std_id=="" ){   
+       
+        $('.addsectionn3').prop('disabled', true)
+        $(".addsectionn3").css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+        $(".addsectionn3").css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)");
+       
+        }
+        else{
+         
+        $('.addsectionn3').prop('disabled', false)
+        $(".addsectionn3").css("background-color","#a79749");
+        $(".addsectionn3").css("color","white");
+        $(".addsectionn3").css("border","solid 1px #a79749");
+        }
+       if(cell2=="" || cell3==""|| cell4=="" || cell5=="" || cell7=="" || cell8==""){
+       
+        $('.addsectionn1').prop('disabled', true)
+        $(".addsectionn1").css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+        $(".addsectionn1").css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)");
+        $(".addsectionn1").css("border","solid 1px #45c759");
+        }
+        else{
+          
+          $('.addsectionn1').prop('disabled', false)
+          $(".addsectionn1").css("background-color","#45c759");
+          $(".addsectionn1").css("color","white");
+          $(".addsectionn1").css("border","solid 1px #45c759");
+        }
+       if(em=="" || ph==""|| epass=="" || id=="" || num==""|| n==""){   
+           console.log("gg");
+          $('.addsectionn2').prop('disabled', true)
+          $(".addsectionn2").css("background-color","rgba(239, 239, 239, 0.3),rgba(19, 1, 1, 0.3)");
+          $(".addsectionn2").css("color","rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3)");
+       
+          }
+        else{
+          console.log("no")
+          $('.addsectionn2').prop('disabled', false)
+          $(".addsectionn2").css("background-color","#4881c3");
+          $(".addsectionn2").css("color","white");
+          $(".addsectionn2").css("border","solid 1px #4881c3");
+       }
+     } 
+     $("input").keyup(function(){
+     var std_id2=document.getElementById('stu').value;
+     var cell22=document.getElementById('cell2').value;
+     var cell33=document.getElementById('cell3').value;
+     var cell44=document.getElementById('cell4').value;
+     var cell55=document.getElementById('cell5').value;
+    
+     var cell77=document.getElementById('cell7').value;
+     var cell88=document.getElementById('cell8').value;
+     var em2=document.getElementById('em').value;
+     var ph2=document.getElementById('ph').value;
+     var epass2=document.getElementById('epass').value;
+     var id2=document.getElementById('id').value;
+     var num2=document.getElementById('num').value;
+     var n2=document.getElementById('n').value;
+     var add2=document.getElementsByClassName('addsectionn3');
+     var addd2=document.getElementsByClassName('addsectionn1');
+     var adddd2=document.getElementsByClassName('addsectionn2');   
+         std_id=std_id2;
+         add=add2;
+         addd=addd2;
+         adddd=adddd2;
+         cell2=cell22;
+         cell3=cell33;
+         cell4=cell44;
+         cell5=cell55;
+         num=num2;
+         n=n2;
+         cell7=cell77;
+         cell8=cell88;
+         em=em2;
+         ph=ph2;
+         id=id2;
+         epass=epass2;
+         checkAndChange();
+     });
+    
+      });
+           </script>  
+    </head>
+    <body>
+        <section class="header1">
+            <nav>
+                <!-- <a href="index.html"><img src="images/Logo.jpg"></a> -->
+                <div class="nav-links15" id="navLinks">
+                    <ul>
+    
+                        <li>
+                            <form  action="{{ url_for('admin') }}" method="POST">
+                                <!-- <input style="display: none" type="text" name="number" value="12" id="number" > -->
+                                <button class="gh1" type="submit" >رجوع</button><i class="vv fa fa-backward"></i>
+                                </form></li>
+                                
+                                <li><a href="{{ url_for('login') }}">تسجيل الخروج</a><i class="vv fa fa-sign-out" ></i></li>
+                               
+                                <li><a href="{{ url_for('home') }}">الصفحة الرئيسية</a><i class="vv fa fa-home" ></i></li>
+                     
+                    
+                 
+                    </ul>
+                </div>
+            </nav>
+<br>
+
+<center><h1 class="h1 ">تعديل مادة </h1></center>
+
+        <br><br>
+
+<input type="text" class="input44" id="myInput" onkeyup="myFunction()" placeholder="ابحث باستخدام  رقم المساق ">
+
+<input type="text" class="input55" id="myInput1" onkeyup="myFunction1()" placeholder="ابحث باستخدام اسم المساق ">
+<br>
+<center>
+  <div  class="container" id="cat">
+      <span  onclick= closeDiv() class="close" title="Close Modal">&times;</span>
+      <input style="display:none" type="text" value="" id="confirm">
+  <table id="myTableq" class="table111">
+    <tr >
+          
+        <th style="width:18%;">عدد الطلاب   </th>
+        <th style="width:18%;">المدرس  </th> 
+        <th style="width:18%;">الوقت  </th>
+        <th style="width:18%;">القاعة  </th>
+       <th style="width:18%;" > شعبة </th>
+       <td style="background-color:#45c759;"><i class="fa fa-plus ccc"></i></td> 
+       <td style="background-color:#4881c3;"><i class="fa fa-pencil cccc"></i></td> 
+      </tr>
+      <tbody id="tBody"> </tbody>
+      </tbody>
+  </table>
+  
+  </div>
+</center>
+<center>
+<table id="myTable" class="table111">
+    <tr class="tt1">
+      
+      <th style="width:25%;">رمز المقرر</th>
+      <th style="width:25%;">اسم المساق </th>
+      <th style="width:25%;">عدد الساعات </th>
+      <th style="width:25%;">الشعب  </th>
+      
+    </tr>
+    
+    {% for row in value %}                         
+    <tr>
+     <td>{{row[0]}}</td>
+     <td>{{row[1]}}</td>
+     <td>{{row[2]}}</td>
+     <td>
+        <i class="fa fa-search btn3"></i>
+<!--        
+         <button class="btn3"><i class="fa fa-search"></i></button> -->
+     </td>
+     </tr>
+     {% endfor %}
+    </table>
+</center>
+
+  
+ 
+ 
+
+    <center> <div  class="container" id="dog">
+        <!-- <input class="addsec" id='cell1' placeholder="عدد الطلاب" type="text"/> -->
+        
+        
+        <input class="addsec" id='cell2' placeholder=" رقم المدرس " type="text"/>
+        <input class="addsec" id='cell7' placeholder="رقم الغرفة" type="text"/>
+        <input class="addsec" id='cell4' placeholder="رمز البنايه" type="text"/>
+        <input class="addsec" id='cell8' placeholder="اسم البناية" type="text"/>
+        <input class="addsec" id='cell3' placeholder="الرقم الخاص بالوقت" type="text"/>
+        <input class="addsec" id='cell5' placeholder="الشعبة" type="text"/>
+        
+        <br><br>
+        <button  disabled class="addsectionn1" >اضافة</button>
+        
+        </div></center>
+        
+        <center>   <div id="bird" class="container" >
+        
+          
+                 <input type="text" class="addsec"  name="ph" id="n" placeholder="رقم المدرس ">
+                 <input type="text" class="addsec"  name="ph" id="num" placeholder="رقم الغرفة"> 
+                  <input type="text" class="addsec"  name="ph" id="epass" placeholder="رمز البنايه">
+                  <input type="text" class="addsec"  name="ph" id="ph" placeholder="اسم البناية"> 
+                  <input type="text" class="addsec" name="lname" id="em" placeholder="الرقم الخاص بالوقت">
+                  <input type="text" class="addsec" name="mNumber" id="id" placeholder="الشعبة">
+            
+         <br><br>
+         <button  disabled class="addsectionn2">تعديل</button>
+               </div></center>
+        
+        
+          <center>   <div id="stt" class="container" >
+          <input type="text" class="addsec"  name="ph" id="stu" placeholder="رقم الطالب">
+          <br><br>
+          <button disabled  class="addsectionn3">اضافة</button>
+        
+            
+        
+        </div></center>
+        
+        
+        <p id="demo"></p>
+
+
+ 
+  <script >
+    
+    var flag="";
+    
+  
+    if(annyang) {
+      var commands = {
+       'تسجيل الخروج':function(){     
+         document.getElementsByTagName("a")[0].click();
+         
+       },
+       'الصفحه الرئيسيه':function(){     
+        document.getElementsByTagName("a")[1].click();
+         
+       },
+      
+        'اغلاق':function(){     
+        document.getElementsByClassName("close")[0].click();
+        closeDiv();
+  
+        }, 
+        'رقم المساق *tag':function(variable){
+        
+         let id=document.getElementById('myInput');
+        variable=variable.replaceAll(" ", "");
+        id.value=variable;
+        myFunction();
+        },
+  
+        'شعب المساق *tag':function(variable){
+             
+          ff(variable);
+    
+          },
+          
+        'حذف شعبه *tag':function(variable){
+          variable=variable.replaceAll(" ", "");
+          variable2=convert(variable);   
+              if (flag=="true"){
+                  variable= variable2;
+                 }
+               else{
+              variable= variable;
+              }
+              console.log(variable);
+          ff2(variable);
+       
+            },
+        'اضافه طالب على الشعبه*tag':function(variable){
+          variable=variable.replaceAll(" ", "");
+          variable2=convert(variable);   
+              if (flag=="true"){
+                  variable= variable2;
+                 }
+               else{
+              variable= variable;
+              }
+              console.log(variable);
+          ff3(variable);
+       
+          },
+         
+          'رقم الطالب *tag':function(variable){
+            variable=variable.replaceAll(" ", "");
+            let id=document.getElementById('stu');
+            id.value=variable; 
+             $('input').keyup();
+          },
+          'اضافه شعبه':function(){
+            document.getElementsByClassName("fa fa-plus ccc")[0].click();
+                     
+         },
+         'تعديل شعبه':function(){
+            document.getElementsByClassName("fa fa-pencil cccc")[0].click();
+           
+         },
+        
+        'رقم المدرس *tag':function(variable){
+          variable=variable.replaceAll(" ", "");
+           variable2=convert(variable);
+           console.log(flag) 
+              if (flag=="true"){
+                  variable= variable2;
+                 }
+              else{
+              variable= variable;
+              }
+           
+          if(document.getElementById('bird').style.visibility=="visible"){
+            console.log('bird');
+            let id2=document.getElementById('n');
+            id2.value=variable;
+            } 
+           
+          if (document.getElementById('dog').style.visibility=="visible"){  
+            console.log('dog');   
+            let id=document.getElementById('cell2');
+            id.value=variable;
+          }
+          $('input').keyup();
+        },  
+        'الشعبه *tag':function(variable){
+                  
+          variable=variable.replaceAll(" ", "");
+           variable2=convert(variable);
+            if (flag=="true"){
+              variable= variable2;
+              }
+             else{
+              variable= variable;
+             }
+
+             if(document.getElementById('bird').style.visibility=="visible"){
+             let id2=document.getElementById('id');
+             id2.value=variable;
+             } 
+            if (document.getElementById('dog').style.visibility=="visible"){     
+            let id=document.getElementById('cell5');
+            id.value=variable;
+          } 
+          
+             $('input').keyup();
+
+           },
+          'الرقم الخاص بالوقت *tag':function(variable){
+                   
+            variable=variable.replaceAll(" ", "");
+           variable2=convert(variable);
+            if (flag=="true"){
+              variable= variable2;
+              }
+             else{
+              variable= variable;
+            }
+             if(document.getElementById('bird').style.visibility=="visible"){
+             let id2=document.getElementById('em');
+             id2.value=variable;
+              } 
+             if (document.getElementById('dog').style.visibility=="visible"){     
+             let id=document.getElementById('cell3');
+             id.value=variable;
+          }
+          $('input').keyup();
+        
+        },
+        'رقم الغرفه *tag':function(variable){
+          
+          variable=variable.replaceAll(" ", "");
+           variable2=convert(variable);
+            if (flag=="true"){
+              variable= variable2;
+              }
+             else{
+              variable= variable;
+            }
+            if(document.getElementById('bird').style.visibility=="visible"){
+             let id2=document.getElementById('num');
+             id2.value=variable;
+             } 
+            if (document.getElementById('dog').style.visibility=="visible"){     
+            let id=document.getElementById('cell7');
+            id.value=variable;
+          }
+        
+          $('input').keyup();
+        },  
+        'رمز البنايه *tag':function(variable){
+         
+          variable=variable.replaceAll(" ", "");
+          
+          variable=convert2(variable);
+          if(document.getElementById('bird').style.visibility=="visible"){
+            let id2=document.getElementById('epass');
+          id2.value=variable;
+            } 
+          if (document.getElementById('dog').style.visibility=="visible"){     
+          let id=document.getElementById('cell4');
+          id.value=variable;
+          }
+          $('input').keyup();
+        },  
+
+        'اسم البنايه *tag':function(variable){
+          if(document.getElementById('bird').style.visibility=="visible"){
+            let id2=document.getElementById('ph');
+          id2.value=variable;
+            } 
+          if (document.getElementById('dog').style.visibility=="visible"){     
+          let id=document.getElementById('cell8');
+          id.value=variable;
+          }   
+          $('input').keyup();
+        },           
+        'اضافه':function(){
+          if(document.getElementById('dog').style.visibility=="visible"){
+          let id=document.getElementsByClassName('addsectionn1')[0].click();
+        } 
+          if(document.getElementById('stt').style.visibility=="visible"){
+            let id=document.getElementsByClassName('addsectionn3')[0].click();
+          }
+        },  
+        'تعديل':function(){
+          if(document.getElementById('bird').style.visibility=="visible"){
+        let id=document.getElementsByClassName('addsectionn2')[0].click();              
+        }},   
+        'اسم المساق *tag':function(variable){
+        let id=document.getElementById('myInput1');
+        id.value=variable;
+        myFunction1();
+        },
+
+        'احذف الرقم':function(){
+        let id=document.getElementById('myInput');
+        id.value="";
+        myFunction();
+        },
+        'احذف الاسم':function(){
+        let id=document.getElementById('myInput1');
+        id.value="";
+        myFunction1();
+        },
+       
+        'رجوع':function(){     
+          document.getElementsByClassName("gh1")[0].click();
+         },
+        'للاسفل':function(){
+        window.scrollBy(0, 600);
+       },
+       'للاعلى':function(){
+        window.scrollBy(0, -600);
+       },
+      }
+     };
+     annyang.setLanguage('ar-PA');
+     // Add our commands to annyang
+     annyang.addCommands(commands);
+   
+    annyang.debug();
+    annyang.start({ autoRestart: true, continuous: true });
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+var myTableq = document.getElementById("myTableq"),rIndex;
+    
+    for(var i = 1; i < myTableq.rows.length; i++){
+      myTableq.rows[i].onclick = function(){
+            rIndex = this.rowIndex;
+            console.log(rIndex);
+    
+            // document.getElementById("nm").value = this.cells[3].innerHTML;
+            document.getElementById("ph").value = this.cells[2].innerHTML;
+            document.getElementById("em").value = this.cells[3].innerHTML;
+            document.getElementById("id").value = this.cells[4].innerHTML;
+            document.getElementById("epass").value = this.cells[1].innerHTML;
+   
+        };
+    }
+    function myFunction1() {
+       // Declare variables
+       var input, filter,myTableq, tr, td, i, txtValue;
+       input = document.getElementById("myInput1");
+       filter = input.value.toUpperCase();
+       myTableq = document.getElementById("myTableq");
+       tr = myTableq.getElementsByTagName("tr");
+
+     
+       // Loop through all table rows, and hide those who don't match the search query
+       for (i = 0; i < tr.length; i++) {
+         td = tr[i].getElementsByTagName("td")[4];
+         if (td) {
+           txtValue = td.textContent || td.innerText;
+           if (txtValue.toUpperCase().indexOf(filter) > -1) {
+             tr[i].style.display = "";
+           } else {
+             tr[i].style.display = "none";
+           }
+         }
+       }}
+                
+                
+   
+    
+    // Data Update Table Here
+    function editTableDisplay(){
+        document.querySelector('.editTable').setAttribute('style', 'display: block;')
+    }
+   
+
+  function insRow()
+{
+var x=document.getElementById('myTableq').insertRow(document.getElementById('myTableq').rows.length);
+var y= x.insertCell(0);
+var z= x.insertCell(1);
+var p= x.insertCell(2);
+var e= x.insertCell(3);
+var f= x.insertCell(4);
+var g= x.insertCell(5);
+var k= x.insertCell(6);
+
+
+
+y.innerHTML=(0);
+z.innerHTML=document.getElementById("cell2").value;
+p.innerHTML=document.getElementById("cell3").value;
+e.innerHTML=document.getElementById("cell4").value;
+f.innerHTML=document.getElementById("cell5").value;
+g.innerHTML='<i class="fa fa-trash cc " onclick="deleteRow(this)"></i>';
+k.innerHTML='<i class="fa fa-user-plus ccccc " onclick="addstd()"></i>';
+
+// g.innerHTML='<input type="button" value="Delete" onclick="deleteRow(this)"/>';
+}
+  function showIt(){
+    document.getElementById("cat").style.visibility="visible";
+    document.getElementById("myTable").style.visibility="hidden";
+    document.getElementById("myInput").style.visibility="hidden";
+    document.getElementById("myInput1").style.visibility="hidden";
+    document.getElementById("bird").style.visibility="hidden";
+    document.getElementById("stt").style.visibility="hidden";
+    document.getElementById("navLinks").style.visibility="hidden";
+    window.scrollBy(0, -40000);
+    
+
+
+  }
+    
+  function closeDiv(){
+    document.getElementById("cat").style.visibility="hidden";
+    document.getElementById("myTable").style.visibility="visible";
+    document.getElementById("myInput").style.visibility="visible";
+    document.getElementById("myInput1").style.visibility="visible";
+    document.getElementById("bird").style.visibility="hidden";
+    document.getElementById("stt").style.visibility="hidden";
+    document.getElementById("dog").style.visibility="hidden";
+    document.getElementById("navLinks").style.visibility="visible";
+   
+  
+    }
+  function addstd(){
+    document.getElementById("stt").style.visibility="visible";
+    document.getElementById("myTable").style.visibility="hidden";
+    document.getElementById("myInput").style.visibility="hidden";
+    document.getElementById("myInput1").style.visibility="hidden";
+    document.getElementById("bird").style.visibility="hidden";
+    document.getElementById("dog").style.visibility="hidden";
+
+
+  }
+  function deletef(){
+    
+    document.getElementById("stt").style.visibility="hidden";
+    document.getElementById("myTable").style.visibility="hidden";
+    document.getElementById("myInput").style.visibility="hidden";
+    document.getElementById("myInput1").style.visibility="hidden";
+    document.getElementById("bird").style.visibility="hidden";
+    document.getElementById("dog").style.visibility="hidden";
+  }
+  function showadd(){
+    document.getElementById("dog").style.visibility="visible";
+    document.getElementById("myTable").style.visibility="hidden";
+    document.getElementById("bird").style.visibility="hidden";
+    document.getElementById("stt").style.visibility="hidden";
+
+  }
+
+  function showedit(){
+    document.getElementById("bird").style.visibility="visible";
+    document.getElementById("myTable").style.visibility="hidden";
+    document.getElementById("dog").style.visibility="hidden";
+    document.getElementById("stt").style.visibility="hidden";
+ 
+  }
+
+
+  
+ 
+    // للبحث باستخدام رقم المساق 
+   function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }}
+    //   للبحث عن اسم المساق 
+    function myFunction1() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput1");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }}
+      
+// للبحث عن نوع المساق 
+function myFunction2() {
+  // Declare variables
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("mySearch1");
+  
+
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myMenu1");
+  li = ul.getElementsByTagName("li");
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+var modal = document.getElementById('id03');
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function drop() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+// لاختياري التخصص
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }}
+//   ----------------لاختيار نوع المساق --------------------
+  function drop1() {
+  document.getElementById("myDropdown1").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+// /نوع المساق  التخصص
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn1')) {
+    var dropdowns1 = document.getElementsByClassName("dropdown1-content");
+    var i;
+    for (i = 0; i < dropdowns1.length; i++) {
+      var openDropdown1 = dropdowns1[i];
+      if (openDropdown1.classList.contains('show')) {
+        openDropdown1.classList.remove('show');
+      }
+    }
+  }}
+
+
+  var x, i, j, l, ll, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+   
+
+var section_id;
+  var course_id;
+
+document.getElementById("myTable").addEventListener("click", function(evt) {
+   
+    var btn = evt.target;
+    if(btn.tagName=="I"){
+    showIt();
+    var row = btn.parentNode.parentNode; 
+    var cells = row.getElementsByTagName("td"); 
+    course_id =cells[0].textContent;
+    
+    $.ajax({
+    url: "{{ url_for('section_ajax') }}",
+    data: {'cl' : course_id},
+    type: 'POST',
+    success: function(response) {
+      var trHTML = '';
+      $('#tBody').html(trHTML);
+      $.each(response, function (i) {
+       
+      trHTML +=
+      '<tr><td>'
+      + (response[i]).cap
+      + '</td><td>'
+      + (response[i]).r_id
+      + '</td><td>'
+      + (response[i]).s_time
+      + '</td><td>'
+      + (response[i]).inst_name
+      + '</td ><td>'
+      + (response[i]).s_id
+      + '</td><td  style="background-color:#c04568;" >' 
+      +' <i class="fa fa-trash cc"></i>'
+      + '</td><td  style="background-color:#a79749;">'
+      +' <i class="fa fa-user-plus ccccc"  ></i>'
+      + '</td></tr>';     
+      });
+      $('#tBody').append(trHTML);
+     
+     // }
+    },
+    
+    //},
+    error: function(error) {
+    console.log(error);
+    }
+    });
+    }///////
+    
+    });
+    
+ document.getElementById("myTableq").addEventListener("click", function(evt) {
+    
+    var btn = evt.target;
+    var name=btn.className;
+     
+    if(btn.tagName=="I" && name=="fa fa-user-plus ccccc"){
+    
+    document.getElementById('cell2').value="";
+     document.getElementById('cell3').value="";
+     document.getElementById('cell4').value="";
+     document.getElementById('cell5').value="";
+     document.getElementById('cell7').value="";
+     document.getElementById('cell8').value="";
+     document.getElementById('n').value="";
+     document.getElementById('em').value="";
+     document.getElementById('epass').value="";
+     document.getElementById('id').value="";
+    document.getElementById('num').value="";
+    document.getElementById('ph').value="";
+  
+
+      addstd();
+    document.getElementById("stu").value="";
+    $('#stu').keyup();
+    var row = btn.parentNode.parentNode; 
+    var cells = row.getElementsByTagName("td"); 
+    section_id =cells[4].textContent;
+    var std_id=document.getElementById("stu").value;
+   
+  }
+    else if(btn.tagName=="I" && name=="fa fa-trash cc"){
+      deletef();
+      document.getElementById('cell2').value="";
+     document.getElementById('cell3').value="";
+     document.getElementById('cell4').value="";
+     document.getElementById('cell5').value="";
+     document.getElementById('cell7').value="";
+     document.getElementById('cell8').value="";
+     document.getElementById('n').value="";
+     document.getElementById('em').value="";
+     document.getElementById('epass').value="";
+     document.getElementById('id').value="";
+    document.getElementById('num').value="";
+    document.getElementById('ph').value="";
+    document.getElementById('stu').value="";
+  
+  
+      var row = btn.parentNode.parentNode; 
+      var cells = row.getElementsByTagName("td"); 
+      section_id =cells[4].textContent;
+     
+      if (confirm("هل انت متأكد؟")) {
+        
+         
+     $.ajax({
+     url: "{{ url_for('deletesection_ajax') }}",
+     data: {'ci' : course_id,'si':section_id},
+     type: 'POST',
+     success: function(response) {
+      var trHTML = '';
+      $('#tBody').html(trHTML);
+      if(response[0]=="false"){
+        document.getElementById('confirm').value= "هناك طلاب";
+        document.getElementById('confirm').style="block";
+      }
+      else{
+        document.getElementById('confirm').value= " تم الحذف";
+        document.getElementById('confirm').style="block";
+      }
+      $.each(response[1], function (i) {
+       
+       trHTML +=
+       '<tr><td>'
+       + (response[1][i]).cap
+       + '</td><td>'
+       + (response[1][i]).r_id
+       + '</td><td>'
+       + (response[1][i]).s_time
+       + '</td><td>'
+       + (response[1][i]).inst_name
+       + '</td ><td>'
+       + (response[1][i]).s_id
+       + '</td><td  style="background-color:#c04568;">' 
+       +' <i class="fa fa-trash cc "></i>'
+       + '</td><td  style="background-color:#a79749;">'
+       +' <i class="fa fa-user-plus ccccc"  ></i>'
+       + '</td></tr>';     
+       });
+       $('#tBody').append(trHTML);
+      },
+      error: function(error) {
+          console.log(error);
+          }
+          }); 
+        }
+      
+    else{
+     txt = "You pressed Cancel!"; 
+      }
+    }
+    else if(btn.tagName=="I" && name=="fa fa-plus ccc"){
+      
+      document.getElementById('n').value="";
+     document.getElementById('em').value="";
+     document.getElementById('epass').value="";
+     document.getElementById('id').value="";
+    document.getElementById('num').value="";
+    document.getElementById('ph').value="";
+  document.getElementById("stu").value="";
+      showadd();
+    $('input').keyup();
+  
+  }
+        
+  else if(btn.tagName=="I" && name=="fa fa-pencil cccc"){
+    
+    document.getElementById("stu").value=""; 
+      document.getElementById('cell2').value="";
+     document.getElementById('cell3').value="";
+     document.getElementById('cell4').value="";
+     document.getElementById('cell5').value="";
+     document.getElementById('cell7').value="";
+     document.getElementById('cell8').value="";
+    showedit();
+    $('input').keyup();
+ 
+  }
+ 
+  });   
+    $(".addsectionn3").click(function(){
+    var std_id=document.getElementById("stu").value;  
+    $.ajax({
+        url: "{{ url_for('addstudenttosection_ajax') }}",
+        data: {'std_id' : std_id , 'si' :section_id , 'ci':course_id },
+        type: 'POST',
+      success: function(response) {
+        console.log(response[1])
+        console.log(response[0])
+        if(response[0]=="yes"){
+                document.getElementById('confirm').value="نم اضافة الطالب ";
+                document.getElementById('confirm').style="block";
+             }
+        else if(response[0]=="no"){
+                document.getElementById('confirm').value="الطالب مسجل من قبل";
+               document.getElementById('confirm').style="block";
+             }
+        else if (response[0]=="error"){
+                document.getElementById('confirm').value="الطالب غير موجدود";
+               document.getElementById('confirm').style="block";
+             }
+             else{
+               document.getElementById('confirm').value="هناك خطا";
+               document.getElementById('confirm').style="block";
+             }
+      var trHTML = '';
+      $('#tBody').html(trHTML);
+        $.each(response[1], function (i) {
+       
+       trHTML +=
+       '<tr><td>'
+       + (response[1][i]).cap
+       + '</td><td>'
+       + (response[1][i]).r_id
+       + '</td><td>'
+       + (response[1][i]).s_time
+       + '</td><td>'
+       + (response[1][i]).inst_name
+       + '</td ><td>'
+       + (response[1][i]).s_id
+       + '</td><td  style="background-color:#c04568;">' 
+       +' <i class="fa fa-trash cc"></i>'
+       + '</td><td  style="background-color:#a79749;">'
+       +' <i class="fa fa-user-plus ccccc"  ></i>'
+       + '</td></tr>';     
+       });
+       $('#tBody').append(trHTML);
+      
+      // }
+     },
+     error: function(error) {
+          console.log(error);
+          }
+
+    });
+    });
+
+
+    $(".addsectionn1").click(function(){
+
+      var inst=document.getElementById('cell2').value;
+     var section_time=document.getElementById('cell3').value;
+     var building=document.getElementById('cell4').value;
+     var section=document.getElementById('cell5').value;
+     var room_id=document.getElementById('cell7').value;
+     var name=document.getElementById('cell8').value;
+    $.ajax({
+        url: "{{ url_for('addsection_ajax') }}",
+        data: {'ci' : course_id , 'inst':inst ,'section':section,'building':building,'section_time':section_time,'room_id':room_id,'name':name },
+        type: 'POST',
+      success: function(response) {
+        
+        if(response[0]=="yes"){
+                document.getElementById('confirm').value="نم اضافة الشعبة ";
+                document.getElementById('confirm').style="block";
+             }
+        else{
+                document.getElementById('confirm').value="هناك خطا";
+               document.getElementById('confirm').style="block";
+             }
+      
+      var trHTML = '';
+      $('#tBody').html(trHTML);
+        $.each(response[1], function (i) {
+       
+       trHTML +=
+       '<tr><td>'
+       + (response[1][i]).cap
+       + '</td><td>'
+       + (response[1][i]).r_id
+       + '</td><td>'
+       + (response[1][i]).s_time
+       + '</td><td>'
+       + (response[1][i]).inst_name
+       + '</td ><td>'
+       + (response[1][i]).s_id
+       + '</td><td  style="background-color:#c04568;">' 
+       +' <i class="fa fa-trash cc"></i>'
+       + '</td><td  style="background-color:#a79749;">'
+       +' <i class="fa fa-user-plus ccccc"  ></i>'
+       + '</td></tr>';     
+       });
+       $('#tBody').append(trHTML);
+      
+      // }
+     },
+     error: function(error) {
+          console.log(error);
+          }
+
+    });
+    });
+
+
+
+    
+    $(".addsectionn2").click(function(){
+    
+     var inst=document.getElementById('n').value;
+     var section_time=document.getElementById('em').value;
+     var building=document.getElementById('epass').value;
+     var section=document.getElementById('id').value;
+    
+     var room_id=document.getElementById('num').value;
+     var name=document.getElementById('ph').value;
+    $.ajax({
+        url: "{{ url_for('editsection_ajax') }}",
+        data: {'ci' : course_id , 'inst':inst ,'section':section,'building':building,'section_time':section_time,'room_id':room_id,'name':name },
+        type: 'POST',
+      success: function(response) {
+        
+        if(response[0]=="yes"){
+                document.getElementById('confirm').value="نم التعديل ";
+                document.getElementById('confirm').style="block";
+             }
+        else{
+                document.getElementById('confirm').value="هناك خطا";
+               document.getElementById('confirm').style="block";
+             }
+      
+      var trHTML = '';
+      $('#tBody').html(trHTML);
+        $.each(response[1], function (i) {
+       
+       trHTML +=
+       '<tr><td>'
+       + (response[1][i]).cap
+       + '</td><td>'
+       + (response[1][i]).r_id
+       + '</td><td>'
+       + (response[1][i]).s_time
+       + '</td><td>'
+       + (response[1][i]).inst_name
+       + '</td ><td>'
+       + (response[1][i]).s_id
+       + '</td><td  style="background-color:#c04568;">' 
+       +' <i class="fa fa-trash cc"></i>'
+       + '</td><td  style="background-color:#a79749;">'
+       +' <i class="fa fa-user-plus ccccc"  ></i>'
+       + '</td></tr>';     
+       });
+       $('#tBody').append(trHTML);
+      
+      // }
+     },
+     error: function(error) {
+          console.log(error);
+          }
+
+    });
+    });
+
+
+  
+    function ff(variable) {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      
+      
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          
+          txtValue = td.textContent || td.innerText;
+        
+          
+          if (txtValue==variable) {
+            
+            document.getElementsByClassName("fa fa-search btn3")[i-1].click();
+          } else {
+            
+          }
+        }
+    
+       }
+    }
+
+    function ff2(variable) {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      
+      
+      table = document.getElementById("myTableq");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4];
+        if (td) {
+          
+          txtValue = td.textContent || td.innerText;
+        
+          
+          if (txtValue==variable) {
+            
+            document.getElementsByClassName("fa fa-trash cc")[i-1].click();
+          } else {
+            
+          }
+        }
+      }}
+
+      function ff3(variable) {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      
+      
+      table = document.getElementById("myTableq");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4];
+        if (td) {
+          
+          txtValue = td.textContent || td.innerText;
+        
+          
+          if (txtValue==variable) {
+            
+            document.getElementsByClassName("fa fa-user-plus ccccc")[i-1].click();
+          } else {
+            
+          }
+        }
+      }}
+
+
+
+
+    function convert(variable){
+       
+       if (variable=="اثنين"){
+            flag="true"
+            console.log("f")
+            return 2
+        }
+
+        if (variable=="تسعه"){
+            flag="true"
+            return 9
+        }
+        if (variable=="ثمانيه"){
+            flag="true"
+            return 8
+        }
+        if (variable=="سبعه"){
+            flag="true"
+            return 7
+        }
+        if (variable=="سته"){
+            flag="true"
+            return 6
+        }
+        if (variable=="خمسه"){
+            flag="true"
+            return 5
+        }
+        if (variable=="اربعه"){
+            flag="true"
+            return 4
+        }
+        if (variable=="ثلاثه"){
+            flag="true"
+            return 3
+        }
+        if (variable=="تلاته"){
+            flag="true"
+            return 3
+        }
+        if (variable=="تلات"){
+            flag="true"
+            return 3
+        }
+        if (variable=="ثلاث"){
+            flag="true"
+            return 3
+        }
+       
+        if (variable=="اتنين"){
+            flag="true"
+            return 2
+        }
+        if (variable=="واحد"){
+            flag="true"
+            return 1
+        }
+        if (variable=="صفر"){
+            flag="true"
+            return 0
+        }
+     flag="false"
+    }
+     ////// for password
+     function convert2(variable){
+        
+        if(variable.includes("تعجب")){
+          
+          variable=variable.replaceAll("تعجب","!")
+         }
+       
+        if(variable.includes("سلم")){
+          variable=variable.replaceAll("سلم","#")
+          
+        }
+        if(variable.includes("دولارساين")){
+          variable=variable.replaceAll("دولارساين", "$")
+        }        
+        if(variable.includes("ستار")){
+          variable=variable.replaceAll("ستار", "*") 
+        }
+        if(variable.includes("اندرسكور")){
+          variable=variable.replaceAll("اندرسكور", "_")
+          
+        }
+        if(variable.includes("سلاش")){
+          variable=variable.replaceAll("سلاش","-")
+        }
+        if(variable.includes("هوتميل")){
+          variable=variable.replaceAll("هوتميل","hotmail")        
+         }
+         if(variable.includes("جيميل")){
+           variable=variable.replaceAll("جيميل","gmail")
+         }
+        if(variable.includes("كابيتالاتش")){
+          variable=variable.replaceAll("كابيتالاتش","H")
+        }
+        if(variable.includes("اتش")){
+          variable=variable.replaceAll("اتش","h")
+        }
+        if(variable.includes("ات")){
+          variable=variable.replaceAll("ات","@")
+        } 
+       if(variable.includes("دوت")){
+           variable=variable.replaceAll("دوت",".")
+         }
+         if(variable.includes("كوم")){
+           variable=variable.replaceAll("كوم","com")
+         }
+         if(variable.includes("كابيتالكيو")){
+           variable=variable.replaceAll("كابيتالكيو","Q")
+         }
+         if(variable.includes("كابيتالدبليو")){
+          variable=variable.replaceAll("كابيتالدبليو","W")
+        }
+        if(variable.includes("كابيتالايه")){
+          variable=variable.replaceAll("كابيتالايه","A") 
+        }
+        if(variable.includes("كابيتالار")){
+          variable=variable.replaceAll("كابيتالار", "R")
+        }
+        if(variable.includes("كابيتالتي")){
+          variable=variable.replaceAll("كابيتالتي", "T") 
+        }
+        if(variable.includes("كابيتالواي")){
+          variable=variable.replaceAll("كابيتالواي", "y")
+        }
+        if(variable.includes("كابيتاليو")){
+          variable=variable.replaceAll("كابيتاليو","U")
+        }
+        if(variable.includes("كابيتالاي")){
+          variable=variable.replaceAll("كابيتالاي","I")
+        }
+        if(variable.includes("كابيتالاو")){
+          variable=variable.replaceAll("كابيتالاو","O")
+        }
+        if(variable.includes("كابيتالهي","كابيتالبهيه","كابيتالبهي")){
+          variable=variable.replaceAll("كابيتالبهيه","P")
+          variable=variable.replaceAll("كابيتالبهي","P")
+          variable=variable.replaceAll("كابيتالهي","P")
+        }
+        if(variable.includes("كابيتالاي")){
+          variable=variable.replaceAll("كابيتالاي","E")
+        }
+        if(variable.includes("كابيتالاس")){
+          variable=variable.replaceAll("كابيتالاس","S")
+        }
+        if(variable.includes("كابيتالدي")){
+          variable=variable.replaceAll("كابيتالدي","D")
+        } 
+        if(variable.includes("كابيتالاف")){
+          variable=variable.replaceAll("كابيتالاف","F")
+        }
+        if(variable.includes("كابيتالجي")){
+          variable=variable.replaceAll("كابيتالجي","G")
+        }
+       
+        if(variable.includes("كابيتالجاي")){
+          variable=variable.replaceAll("كابيتالجاي","J")
+        }
+        if(variable.includes("كابيتالكي","كابيتالكيك")){
+          variable=variable.replaceAll("كابيتالكيك","K")
+          variable=variable.replaceAll("كابيتالكي","K")
+        }
+        if(variable.includes("كابيتالال")){
+          variable=variable.replaceAll("كابيتالال","L")
+        }
+        if(variable.includes("كابيتالام")){
+          variable=variable.replaceAll("كابيتالام","M")
+        }
+        if(variable.includes("كابيتالان")){
+          variable=variable.replaceAll("كابيتالان","N")
+        }
+        if(variable.includes("كابيتالبي")){
+          variable=variable.replaceAll("كابيتالبي","B")
+        } 
+        if(variable.includes("كابيتالفي")){
+          variable=variable.replaceAll("كابيتالفي","V")
+        }
+        if(variable.includes("كابيتالسي")){ 
+          variable=variable.replaceAll("كابيتالسي","C")
+        }
+        if(variable.includes("كابيتالاكس")){
+          variable=variable.replaceAll("كابيتالاكس","X")
+        }
+        if(variable.includes("كابيتالزد")){
+          variable=variable.replaceAll("كابيتالزد","Z")
+        }
+        
+        if(variable.includes("كيو")){
+           variable=variable.replaceAll("كيو","q")
+         }
+        if(variable.includes("دبليو")){
+          variable=variable.replaceAll("دبليو","w")
+        }
+        if(variable.includes("ايه")){
+          variable=variable.replaceAll("ايه","a") 
+        }
+        if(variable.includes("ار")){
+          variable=variable.replaceAll("ار", "r")
+        }
+        if(variable.includes("تي")){
+          variable=variable.replaceAll("تي", "t") 
+        }
+        if(variable.includes("واي")){
+          variable=variable.replaceAll("واي", "y")
+        }
+        if(variable.includes("يو")){
+          variable=variable.replaceAll("يو","u")
+        }
+        
+        if(variable.includes("او")){
+          variable=variable.replaceAll("او","o")
+        }
+        if(variable.includes("هي","هيه","بهيه")){
+          variable=variable.replaceAll("بهيه","p")
+          variable=variable.replaceAll("هيه","p")
+          variable=variable.replaceAll("هي","p")
+        }
+       
+        if(variable.includes("اس")){
+          variable=variable.replaceAll("اس","s")
+        }
+        if(variable.includes("دي")){
+          variable=variable.replaceAll("دي","d")
+        }
+        if(variable.includes("اف")){
+          variable=variable.replaceAll("اف","f")
+        }
+        if(variable.includes("جي")){
+          variable=variable.replaceAll("جي","g")
+        }
+        if(variable.includes("جاي")){
+          variable=variable.replaceAll("جاي","j")
+        }
+        if(variable.includes("اي")){
+          variable=variable.replaceAll("اي","e")
+        }
+        if(variable.includes("اي")){
+          variable=variable.replaceAll("اي","i")
+        }
+        if(variable.includes("كي","كيك")){
+          variable=variable.replaceAll("كيك","k")
+          variable=variable.replaceAll("كي","k")
+        }
+        if(variable.includes("ال")){
+          variable=variable.replaceAll("ال","l")
+        }
+        if(variable.includes("ام")){
+          variable=variable.replaceAll("ام","m")
+        }
+        if(variable.includes("ان")){
+          variable=variable.replaceAll("ان","n")
+        }
+        if(variable.includes("بي")){
+          variable=variable.replaceAll("بي","b")
+        }
+        if(variable.includes("في")){
+          variable=variable.replaceAll("في","v")
+        }
+        if(variable.includes("سي")){
+          variable=variable.replaceAll("سي","c")
+        }
+        if(variable.includes("اكس")){
+          variable=variable.replaceAll("اكس","x")
+        }
+        if(variable.includes("زد")){
+          variable=variable.replaceAll("زد","z")
+        }
+       return variable
+      }
+
+ 
+ </script>
+  </body>
+  </html>

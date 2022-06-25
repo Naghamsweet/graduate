@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>الجدول الدراسي الحالي </title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+
+  <meta name="viewport" content="width = device-width, initial-scale=1.0">
+   </head>
+    <body>
+     
+        <div class="bannerr">
+
+        <div class="nav-links3" id="navLinks">
+        <ul class="nav-link">
+          <li>
+            <form  action="{{ url_for('afterlogin') }}" method="POST">
+              <input style="display: none" type="text" name="number" value="{{v2}}" id="number" >
+              <button type="submit" class="gh">رجوع</button><i class="fa fa-backward"></i>
+              </form></li>
+          <li><a href="{{ url_for('login') }}"class="b" >تسجيل الخروج</a><i class="fa fa-sign-out" ></i></li>
+           <li><a href="{{ url_for('home') }}" class="b">الصفحة الرئيسية</a><i class="fa fa-home" ></i></li>
+          
+       </ul>
+         </div>
+         
+          <div style="display:none" id="divv">
+            <input type="text" id="t1">
+          </div>
+          <br>
+          <input type="text"  style="display: none" value="{{v2}}" id="id015">
+  
+        <br>
+        <div id="reg" style="display:none">
+         <table id="registration_table"  >
+          <tr class="header">
+            <thead>
+          <th>حذف</th>
+          <th>الوقت</th>
+          <th>الشعبة</th>
+          <th>عدد الساعات</th>
+          <th>اسم المقرر</th>
+          <th>رقم المقرر</th>
+          </the
+          ad>
+          </tr>
+          <tbody id="registration_body">
+         </tbody>
+  
+         </table>
+         <input type="text" id="sum_of_hours">
+        </div>
+         <br>
+        
+         <input type="text" class="myinput" id="myInput9" onkeyup="myFunction1()" placeholder=" التخصص">
+         <br><br>
+         <input type="text" class="myinput" id="myInput8" onkeyup="myFunction8()" placeholder=" نوع المساق">
+            <br><br>
+          <input type="text" class="myinput" id="myInput" onkeyup="myFunction()" placeholder=" رقم المساق">
+          <br><br>
+          <input type="text" class="myinput" id="myInput1" onkeyup="myFunction1()" placeholder=" اسم المساق ">
+          
+          
+          <br><br><br>
+  
+         <table id="viewTable"  class="table111">
+         <tr class="header">
+      
+         <th style="width:25%;">رمز المقرر</th>
+         <th style="width:25%;">اسم المساق </th>
+         <th style="width:25%;">عدد الساعات </th>
+         <th style="width:25%;">نوع المساق </th>
+         <th style="width:25%;">الشعب  </th>
+      
+         </tr>
+  
+         {% for row in value %}                         
+         <tr>
+          <td>{{row[0]}}</td>
+          <td>{{row[1]}}</td>
+          <td>{{row[2]}}</td>
+          <td>{{row[3]}}</td>
+          <td>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+              <button class="btn3"><i class="fa fa-search"></i></button>
+          </td>
+          </tr>
+          {% endfor %}
+          </table>
+  
+  
+               
+            <div id="id03" class="modal">
+  
+              <!-- <div id="id02" class="modal1">
+                <form class="modal-content1" action="/action_page.php">
+                  <div class="container">
+                      <label for="uname"><h3> هل انت متاكد؟<h3></label>
+                   <br>
+                    <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn1">تاكيد</button>
+                          <br><br>
+                          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn1">تراجع</button>
+                          <br><br>
+                           </div>     
+                       </form></div>      <br><br>  -->
+              <!-- onclick="document.getElementById('id03').style.display='none' -->
+              <span class="close" onclick= closeDiv()  title="Close Modal">&times;</span>
+              <!-- <form class="modal-content animate" > -->
+              <div class="container"> 
+               <table id="myTable">
+               <tr class="header">
+                         
+                              
+                              <th style="width:20%;">الحالة   </th>
+                              <th style="width:20%;">المدرس  </th> 
+                              <th style="width:20%;">الوقت  </th>
+                              <th style="width:20%;">القاعة  </th>
+                              <th style="width:20%;" > شعبة </th>
+                              <th style="width:20%;" > اختيار</th>
+               </tr>
+              
+               <p><b class="pp">يرجى اختيار الشعبة المراد تسجيلها   </b></p>
+               
+                         <input type="text" id="test">
+                   <tbody id="tBody"> </tbody>
+               </table>
+                <!-- <button class="btn2"> <b>+ اختيار الشعبة </b> </button> -->
+             </div>
+         
+   
+  
+  
+  </body>
+  
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> -->
+  <script>
+  
+   var course_id;
+   
+   
+   
+    
+    function 
+    
+    
+    
+    closeDiv(){
+      document.getElementById('id03').style.display='none';
+      document.getElementById('myInput1').value="";
+     myFunction1() ;
+  
+    }
+    function ff(variable) {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      
+      
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4];
+        if (td) {
+          
+          txtValue = td.textContent || td.innerText;
+          
+          console.log(i)
+          
+          if (txtValue==variable) {
+            
+            document.getElementsByClassName("h")[i-1].click();
+          } else {
+            
+          }
+        }
+    
+       }
+    }
+    function ff2(variable) {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      
+      
+      table = document.getElementById("registration_table");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4];
+      
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          console.log(i)
+          if (txtValue==variable) {
+            console.log("ggggggg")
+            console.log(i)
+            console.log(variable);
+            document.getElementsByClassName("w")[i-2].click();
+          }else{
+
+          }
+        }
+      }}
+    // للبحث باستخدام رقم المساق 
+    function myFunction() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("viewTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+    
+      document.getElementById("myInput8").value="";
+      document.getElementById("myInput1").value="";  }
+    }
+    //   للبحث عن اسم المساق 
+    function myFunction1() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput1");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("viewTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+      document.getElementById("myInput8").value="";
+      document.getElementById("myInput").value="";}
+  
+  
+      //   للبحث عن نوع المساق 
+    function myFunction8() {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput8");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("viewTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[3];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+      document.getElementById("myInput").value="";
+      document.getElementById("myInput1").value="";
+    }
+  
+  
+  
+      document.getElementById("myTable").addEventListener("click", function(evt) {
+  
+        var btn = evt.target;
+        if(btn.tagName==="BUTTON"){
+        var row = btn.parentNode.parentNode; 
+        var cells = row.getElementsByTagName("td"); 
+        console.log(cells[4].textContent);
+        console.log(course_id);
+        var std_id = document.getElementById("id015").value;
+        
+        var s_id=cells[4].textContent;
+        if (confirm("هل انت متأكد؟")) {
+          
+       // var sec_time = cells[2].textContent;
+  
+        $.ajax({
+          url: "{{ url_for('registration_ajax') }}",
+          data: {'cl' : course_id , 'sl' : s_id , 'std_id' : std_id},
+          type: 'POST',
+          success: function(response) {
+           document.getElementsByClassName("span1")[0].click();
+           document.getElementById('myInput1').value="";
+           myFunction1();
+  
+          
+  
+              var trHTML = '';
+              $('#registration_body').html(trHTML);
+              //console.log((response[1][1]).time)
+              
+              
+             // $.each(response[1], function (i) {
+                //console.log((response[1][i]))
+                for (var i = 0; i < response[1].length; ++i){
+                  trHTML +=
+                  '<tr><td>'
+                  +' <button class="w"style="width:100%"><i class="fa fa-download"></i></button>'
+                  + '</td><td>'
+                  + (response[1][i]).time
+                  + '</td><td>'
+                  + (response[1][i]).s_id
+                  + '</td><td>'
+                  + (response[1][i]).nh
+                  + '</td><td>'
+                  + (response[1][i]).cn
+                  + '</td ><td>'
+                  + (response[1][i]).c_id
+                  + '</td></tr>';
+    
+                //i++;
+             // });
+                  }
+                $('#registration_body').append(trHTML);
+                document.getElementById('reg').style.display='block';
+   // }
+  
+  //نهاية الif 
+           
+           //console.log(response[0]);
+           //console.log(response[1]);
+  
+  
+           document.getElementById("t1").value=response;
+           document.getElementById("divv").style.display="block";
+  
+          },
+          
+          error: function(error) {
+          console.log(error);
+          }
+          });
+          }///////
+        
+        
+        
+        } else {
+          txt = "You pressed Cancel!";
+        }
+      
+        
+        
+        }); 
+  
+  /////////////////////////////////////////////////////////////////////
+  //delete a course
+  
+  document.getElementById("registration_table").addEventListener("click", function(evt) {
+  
+    var btn = evt.target;
+    if(btn.tagName==="BUTTON"){
+    var row = btn.parentNode.parentNode; 
+    var cells = row.getElementsByTagName("td"); 
+    var std_id = document.getElementById("id015").value;
+    course_id = cells[5].textContent;
+    var s_id=cells[2].textContent;
+    console.log(cells[4].textContent);
+    console.log(course_id);
+    if (confirm("هل انت متأكد؟")) {
+      
+   // var sec_time = cells[2].textContent;
+  
+    $.ajax({
+      url: "{{ url_for('delete_ajax') }}",
+      data: {'cl' : course_id , 'sl' : s_id , 'std_id' : std_id},
+      type: 'POST',
+  
+  
+      success: function(response) {
+       document.getElementsByClassName("span1")[0].click();
+       document.getElementById('myInput1').value="";
+       myFunction1();
+  
+     
+          var trHTML = '';
+          $('#registration_body').html(trHTML);
+  
+            for (var i = 0; i < response[1].length; ++i){
+              trHTML +=
+              '<tr><td>'
+              +' <button class="w" style="width:100%"><i class="fa fa-download"></i></button>'
+              + '</td><td>'
+              + (response[1][i]).time
+              + '</td><td>'
+              + (response[1][i]).s_id
+              + '</td><td>'
+              + (response[1][i]).nh
+              + '</td><td>'
+              + (response[1][i]).cn
+              + '</td ><td>'
+              + (response[1][i]).c_id
+              + '</td></tr>';
+  
+            //i++;
+         // });
+              }
+            $('#registration_body').append(trHTML);
+            document.getElementById('reg').style.display='block';
+  // }
+  
+  //نهاية الif 
+       
+       //console.log(response[0]);
+       //console.log(response[1]);
+  
+  
+       document.getElementById("t1").value=response;
+       document.getElementById("divv").style.display="block";
+  
+      },
+      
+      error: function(error) {
+      console.log(error);
+      }
+      });
+      }///////
+    
+    
+    
+    } else {
+      txt = "You pressed Cancel!";
+    }
+  
+    
+    
+    }); 
+  
+  
+  
+  
+  
+         
+  //function fun(c){
+  // console.log(c);
+  //}
+  ////////////////////////////////////////////////////
+  ////show to the sections table for a course
+  
+  
+  document.getElementById("viewTable").addEventListener("click", function(evt) {
+  var btn = evt.target;
+  if(btn.tagName==="BUTTON"){
+  var row = btn.parentNode.parentNode; 
+  var cells = row.getElementsByTagName("td"); 
+  //console.log(cells[0].textContent);
+  course_id =cells[0].textContent;
+  
+  $.ajax({
+  url: "{{ url_for('process_ajax') }}",
+  data: {'cl' : course_id},
+  type: 'POST',
+  success: function(response) {
+   // for (const key in response){
+    var trHTML = '';
+    $('#tBody').html(trHTML);
+    $.each(response, function (i) {
+      
+      var state ="";
+     if((response[i]).cap == 0){
+        (response[i]).cap="مغلقة"
+      }
+     else{
+        (response[i]).cap="مفتوحة"
+      }
+    
+    trHTML +=
+    '<tr><td>'
+    + (response[i]).cap
+    + '</td><td>'
+    + (response[i]).r_id
+    + '</td><td>'
+    + (response[i]).s_time
+    + '</td><td>'
+    + (response[i]).inst_name
+    + '</td ><td>'
+    + (response[i]).s_id
+    + '</td><td>' 
+    +' <button class="h"style="width:100%"><i class="fa fa-download"></i></button>'
+    + '</td></tr>';
+    
+    
+    });
+    $('#tBody').append(trHTML);
+    document.getElementById('id03').style.display='block';
+   // }
+  },
+  
+  //},
+  error: function(error) {
+  console.log(error);
+  }
+  });
+  }///////
+  
+  }); 
+  
+  /////////////////////////
+  //////////////////////////
+  ///////////////////////////
+  ////////////////////////////
+  ///////////////////////////////
+  //////////////////////////////
+  var flag="";
+  
+  
+  if(annyang) {
+      var commands = {
+       'تسجيل الخروج':function(){     
+         document.getElementsByTagName("a")[1].click();
+         
+       },
+       'الصفحه الرئيسيه':function(){     
+        document.getElementsByTagName("a")[2].click();
+         
+       },
+      
+        'اغلاق':function(){     
+        document.getElementsByClassName("span1")[0].click();
+        document.getElementById('myInput1').value="";
+        myFunction1();
+  
+        }, 
+        'رقم المساق *tag':function(variable){
+        let id=document.getElementById('myInput');
+        variable=variable.replaceAll(" ", "");
+        id.value=variable;
+        myFunction();
+        },
+  
+        'شعب المساق *tag':function(variable){
+          
+          document.getElementById('myInput1').value=variable;
+          //id.value=variable;
+          myFunction1();
+  
+          document.getElementsByClassName("btn3")[0].click();
+    
+          },
+          'اختيار شعبه *tag':function(variable){
+           variable=variable.replaceAll(" ", "");
+           variable2=convert(variable);
+            console.log(flag)
+              if (flag=="true"){
+              variable= variable2;
+              }
+             else{
+              variable= variable;
+            }
+           
+            ff(variable);
+          
+    
+          },
+          'حذف *tag':function(variable){
+            ff2(variable);
+          
+          },
+  
+  
+        'اسم المساق *tag':function(variable){
+        let id=document.getElementById('myInput1');
+        id.value=variable;
+        myFunction1();
+        },
+
+        'نوع المساق *tag':function(variable){
+          let id=document.getElementById('myInput8');
+          id.value=variable;
+          myFunction8();
+          },
+        'احذف الرقم':function(variable){
+        let id=document.getElementById('myInput');
+        id.value="";
+        myFunction();
+        },
+        'احذف الاسم':function(variable){
+        let id=document.getElementById('myInput1');
+        id.value="";
+        myFunction1();
+        },
+        'احذف النوع':function(variable){
+        let id=document.getElementById('myInput1');
+        id.value="";
+        myFunction1();
+        },
+        'رجوع':function(){     
+          document.getElementsByClassName("gh")[0].click();    
+        },
+        'للاسفل':function(){
+        window.scrollBy(0, 600);
+       },
+       'للاعلى':function(){
+        window.scrollBy(0, -600);
+       },
+      }
+     };
+     annyang.setLanguage('ar-PA');
+     // Add our commands to annyang
+     annyang.addCommands(commands);
+   
+    annyang.debug();
+    annyang.start({ autoRestart: true, continuous: true });
+  
+    function convert(variable){
+        if (variable=="تسعه"){
+            flag="true"
+            return 9
+        }
+        if (variable=="ثمانيه"){
+            flag="true"
+            return 8
+        }
+        if (variable=="سبعه"){
+            flag="true"
+            return 7
+        }
+        if (variable=="سته"){
+            flag="true"
+            return 6
+        }
+        if (variable=="خمسه"){
+            flag="true"
+            return 5
+        }
+        if (variable=="اربعه"){
+            flag="true"
+            return 4
+        }
+        if (variable=="ثلاثه"){
+            flag="true"
+            return 3
+        }
+        if (variable=="تلاته"){
+            flag="true"
+            return 3
+        }
+        if (variable=="اثنين"){
+            flag="true"
+            return 2
+        }
+        if (variable=="اتنين"){
+            flag="true"
+            return 2
+        }
+        if (variable=="واحد"){
+            flag="true"
+            return 1
+        }
+        if (variable=="صفر"){
+            flag="true"
+            return 0
+        }
+     flag="false"
+    }
+      </script>
+      
+      </html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <title>معلومات الطالب</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+    </head>
+    
+
+    
+        <body>
+            <section class="headerinfo">
+                <nav>
+                    <!-- <a href="index.html"><img src="images/Logo.jpg"></a> -->
+                    <div class="nav-links3" id="navLinks">
+                        <ul>
+                          <li>
+                            <form  action="{{ url_for('afterlogin') }}" method="POST">
+                              <input style="display: none" type="text" name="number" value="{{v2}}" id="number" >
+                              <button type="submit" class="gh">رجوع</button><i class="fa fa-backward"></i>
+                              </form></li>
+        
+                            <li><a href="{{ url_for('login') }}">تسجيل الخروج</a><i class="fa fa-sign-out" ></i></li>
+                           
+                            <li><a href="{{ url_for('home') }}">الصفحة الرئيسية</a><i class="fa fa-home" ></i></li>
+                        </ul>
+                    </div>
+        
+                    
+                </nav>
+                <center>
+                    <div class="sidebar1">
+                        <br><br>
+               
+              <h1 class="h1">تعديل معلومات الطالب</h1>
+             
+              <br>
+              <center>
+              <div class="editInfo">
+        <table class="changetable">
+            <img class="ph" src="{{ url_for('static', filename='girl.jpeg') }}">
+            <div class="tt">
+        {% for row in value %} 
+        <input style="display: none" type="text" name="std_id" value="{{row[0]}}" id="std_id" >
+        <input style="display: none" type="text" name="confirm" value="" id="confirm" >
+           <tr>
+                <td>{{row[1]}}</td>
+                <td> :اسم الطالب</td>
+            </tr>
+            
+            <tr>
+                <td> {{row[2]}}</td>
+                <td> :الجنس</td>
+            </tr>
+          
+            <tr>
+                <td> {{row[3]}}</td>
+                <td>:التخصص</td>
+            </tr>
+            <tr>
+                <td> <input type="text" class="inputt" id="phone" name="number" value="{{row[4]}}"></td>
+                <td> :رقم الهاتف</td>
+            </tr>
+            <tr>
+                <td> <input type="email" class="inputt" id="email" name="email" value="{{row[5]}}"></td>
+                <td>:البريد الالكتروني</td>
+            </tr>
+        </table>
+        <button onclick="yes()" value="تأكيد" id="y"class="yes">تأكيد</button>
+        <button onclick="NO()" value="تراجع" id="N"class="NO">تراجع</button>        
+        </div>
+              </div>
+                        </div>
+                    </center>
+                </center>
+    
+                      </body>
+                      
+   <script>
+      var peforephone=document.getElementById("phone").value; 
+      var peforeemail=document.getElementById("email").value; 
+
+      function NO() {
+     document.getElementById('confirm').value="تم الغائ العملية";
+    document.getElementById('confirm').style="block";
+    document.getElementById("phone").value=peforephone;
+    document.getElementById("email").value=peforeemail;    
+     }
+        
+    function yes() {
+         
+          var std_id=document.getElementById("std_id").value; 
+          var phone=document.getElementById("phone").value; 
+          var email=document.getElementById("email").value;
+          if (email.includes("@")) {
+     
+     $.ajax({
+     url: "{{ url_for('student_info_ajax') }}",
+     data: {'std_id' : std_id , 'phone' : phone , 'email' :email},
+     type: 'POST',
+    success: function(response) {
+          
+     document.getElementById("phone").value=response[0];
+     document.getElementById('email').value=response[1];
+     if(response[2]=="yes"){
+        document.getElementById('confirm').value="تمت العملية بنجاح";
+     }
+     else{
+        document.getElementById('confirm').value="تم الغاء العملية";
+     }
+     document.getElementById('confirm').style="block";    
+
+    },
+   error: function(error) {
+    document.getElementById('confirm').value="هناك خطأ";
+    document.getElementById('confirm').style="block";
+    document.getElementById("phone").value=peforephone;
+    document.getElementById("email").value=peforeemail; 
+    }
+    });  
+          }
+          else{
+    document.getElementById('confirm').value="هناك خطأ";
+    document.getElementById('confirm').style="block";
+    document.getElementById("phone").value=peforephone;
+    document.getElementById("email").value=peforeemail;               
+          }
+  };
+  
+  
+  if(annyang) {
+          var commands = {
+           'تسجيل الخروج':function(){     
+             document.getElementsByTagName("a")[1].click();
+             
+           },
+           'الصفحه الرئيسيه':function(){     
+             document.getElementsByTagName("a")[2].click();
+             
+           },
+           'رجوع':function(){     
+            document.getElementsByClassName("gh")[0].click();          
+           }, 
+           'رقم الهاتف *tag':function(variable){ 
+            cc=variable.replaceAll(" ", "");
+            document.getElementsByClassName("inputt")[0].value=cc; 
+           },
+           'البريد الالكتروني *tag':function(variable){ 
+            cc=variable.replaceAll(" ", "");
+            cc1=convert(cc);
+            console.log(cc1);
+            document.getElementsByClassName("inputt")[1].value=cc1; 
+           },
+           'تراجع':function(){     
+            document.getElementsByClassName("NO")[0].click();       
+           },
+           'تاكيد':function(){     
+            document.getElementsByClassName("yes")[0].click();           
+           },
+          
+        
+          }
+         };
+         annyang.setLanguage('ar-PA');
+         // Add our commands to annyang
+         annyang.addCommands(commands);
+       
+         annyang.debug();
+        annyang.start({ autoRestart: true, continuous: true });
+
+
+
+function convert(variable){
+
+        if(variable.includes("تعجب")){
+          
+          variable=variable.replaceAll("تعجب","!")
+         }
+       
+        if(variable.includes("سلم")){
+          variable=variable.replaceAll("سلم","#")
+          
+        }
+        if(variable.includes("دولارساين")){
+          variable=variable.replaceAll("دولارساين", "$")
+        }        
+        if(variable.includes("ستار")){
+          variable=variable.replaceAll("ستار", "*") 
+        }
+        if(variable.includes("اندرسكور")){
+          variable=variable.replaceAll("اندرسكور", "_")
+          
+        }
+        if(variable.includes("سلاش")){
+          variable=variable.replaceAll("سلاش","-")
+        }
+        if(variable.includes("هوتميل")){
+          variable=variable.replaceAll("هوتميل","hotmail")        
+         }
+         if(variable.includes("جيميل")){
+           variable=variable.replaceAll("جيميل","gmail")
+         }
+        if(variable.includes("كابيتالاتش")){
+          variable=variable.replaceAll("كابيتالاتش","H")
+        }
+        if(variable.includes("اتش")){
+          variable=variable.replaceAll("اتش","h")
+        }
+        if(variable.includes("ات")){
+          variable=variable.replaceAll("ات","@")
+        } 
+       if(variable.includes("دوت")){
+           variable=variable.replaceAll("دوت",".")
+         }
+         if(variable.includes("كوم")){
+           variable=variable.replaceAll("كوم","com")
+         }
+         if(variable.includes("كابيتالكيو")){
+           variable=variable.replaceAll("كابيتالكيو","Q")
+         }
+         if(variable.includes("كابيتالدبليو")){
+          variable=variable.replaceAll("كابيتالدبليو","W")
+        }
+        if(variable.includes("كابيتالايه")){
+          variable=variable.replaceAll("كابيتالايه","A") 
+        }
+        if(variable.includes("كابيتالار")){
+          variable=variable.replaceAll("كابيتالار", "R")
+        }
+        if(variable.includes("كابيتالتي")){
+          variable=variable.replaceAll("كابيتالتي", "T") 
+        }
+        if(variable.includes("كابيتالواي")){
+          variable=variable.replaceAll("كابيتالواي", "y")
+        }
+        if(variable.includes("كابيتاليو")){
+          variable=variable.replaceAll("كابيتاليو","U")
+        }
+        if(variable.includes("كابيتالاي")){
+          variable=variable.replaceAll("كابيتالاي","I")
+        }
+        if(variable.includes("كابيتالاو")){
+          variable=variable.replaceAll("كابيتالاو","O")
+        }
+        if(variable.includes("كابيتالهي","كابيتالبهيه","كابيتالبهي")){
+          variable=variable.replaceAll("كابيتالبهيه","P")
+          variable=variable.replaceAll("كابيتالبهي","P")
+          variable=variable.replaceAll("كابيتالهي","P")
+        }
+        if(variable.includes("كابيتالاي")){
+          variable=variable.replaceAll("كابيتالاي","E")
+        }
+        if(variable.includes("كابيتالاس")){
+          variable=variable.replaceAll("كابيتالاس","S")
+        }
+        if(variable.includes("كابيتالدي")){
+          variable=variable.replaceAll("كابيتالدي","D")
+        } 
+        if(variable.includes("كابيتالاف")){
+          variable=variable.replaceAll("كابيتالاف","F")
+        }
+        if(variable.includes("كابيتالجي")){
+          variable=variable.replaceAll("كابيتالجي","G")
+        }
+       
+        if(variable.includes("كابيتالجاي")){
+          variable=variable.replaceAll("كابيتالجاي","J")
+        }
+        if(variable.includes("كابيتالكي","كابيتالكيك")){
+          variable=variable.replaceAll("كابيتالكيك","K")
+          variable=variable.replaceAll("كابيتالكي","K")
+        }
+        if(variable.includes("كابيتالال")){
+          variable=variable.replaceAll("كابيتالال","L")
+        }
+        if(variable.includes("كابيتالام")){
+          variable=variable.replaceAll("كابيتالام","M")
+        }
+        if(variable.includes("كابيتالان")){
+          variable=variable.replaceAll("كابيتالان","N")
+        }
+        if(variable.includes("كابيتالبي")){
+          variable=variable.replaceAll("كابيتالبي","B")
+        } 
+        if(variable.includes("كابيتالفي")){
+          variable=variable.replaceAll("كابيتالفي","V")
+        }
+        if(variable.includes("كابيتالسي")){ 
+          variable=variable.replaceAll("كابيتالسي","C")
+        }
+        if(variable.includes("كابيتالاكس")){
+          variable=variable.replaceAll("كابيتالاكس","X")
+        }
+        if(variable.includes("كابيتالزد")){
+          variable=variable.replaceAll("كابيتالزد","Z")
+        }
+        
+        if(variable.includes("كيو")){
+           variable=variable.replaceAll("كيو","q")
+         }
+        if(variable.includes("دبليو")){
+          variable=variable.replaceAll("دبليو","w")
+        }
+        if(variable.includes("ايه")){
+          variable=variable.replaceAll("ايه","a") 
+        }
+        if(variable.includes("ار")){
+          variable=variable.replaceAll("ار", "r")
+        }
+        if(variable.includes("تي")){
+          variable=variable.replaceAll("تي", "t") 
+        }
+        if(variable.includes("واي")){
+          variable=variable.replaceAll("واي", "y")
+        }
+        if(variable.includes("يو")){
+          variable=variable.replaceAll("يو","u")
+        }
+        
+        if(variable.includes("او")){
+          variable=variable.replaceAll("او","o")
+        }
+        if(variable.includes("هي","هيه","بهيه")){
+          variable=variable.replaceAll("بهيه","p")
+          variable=variable.replaceAll("هيه","p")
+          variable=variable.replaceAll("هي","p")
+        }
+       
+        if(variable.includes("اس")){
+          variable=variable.replaceAll("اس","s")
+        }
+        if(variable.includes("دي")){
+          variable=variable.replaceAll("دي","d")
+        }
+        if(variable.includes("اف")){
+          variable=variable.replaceAll("اف","f")
+        }
+        if(variable.includes("جي")){
+          variable=variable.replaceAll("جي","g")
+        }
+        if(variable.includes("جاي")){
+          variable=variable.replaceAll("جاي","j")
+        }
+        if(variable.includes("اي")){
+          variable=variable.replaceAll("اي","e")
+        }
+        if(variable.includes("اي")){
+          variable=variable.replaceAll("اي","i")
+        }
+        if(variable.includes("كي","كيك")){
+          variable=variable.replaceAll("كيك","k")
+          variable=variable.replaceAll("كي","k")
+        }
+        if(variable.includes("ال")){
+          variable=variable.replaceAll("ال","l")
+        }
+        if(variable.includes("ام")){
+          variable=variable.replaceAll("ام","m")
+        }
+        if(variable.includes("ان")){
+          variable=variable.replaceAll("ان","n")
+        }
+        if(variable.includes("بي")){
+          variable=variable.replaceAll("بي","b")
+        }
+        if(variable.includes("في")){
+          variable=variable.replaceAll("في","v")
+        }
+        if(variable.includes("سي")){
+          variable=variable.replaceAll("سي","c")
+        }
+        if(variable.includes("اكس")){
+          variable=variable.replaceAll("اكس","x")
+        }
+        if(variable.includes("زد")){
+          variable=variable.replaceAll("زد","z")
+        }
+       return variable
+      
+}
+
+
+
+
+
+   </script>                
+{% endfor %}                
+</html>

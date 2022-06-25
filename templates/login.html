@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script> 
+   
+  </head>
+<body>
+  <div id="id02" class="modal1">
+    <div class="modal-content1">
+    <div class="container">
+        <label for="uname"><h3>عليك تعبئة الحقول<h3></label>
+       <br>
+        <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn1">إغلاق</button>
+              <br><br>
+               </div>
+            </div></div> 
+  <div class="header">
+    <div class="login-box">
+        <h2>تسجيل الدخول</h2>
+        <form  id="info"action="loginforstudent" method="POST">
+          <div class="user-box">
+            <input type="text" class="tee" name="number" required placeholder="رقم التسجيل" id="number">
+           
+            
+            <input type="password" class="tee"  name="password" required placeholder="كلمة السر" id="password">
+            <i class="bi bi-eye-slash" id="togglePassword"></i> 
+       <br><br>
+        </div>
+        <div class="cheak-box">
+          <input type="radio" id="myCheck1" name="check" value="admin" required>
+          <label  class="lab"for="check" >  أدمن</label></div>
+          <br>
+          <div class="cheak-box"> 
+          <input type="radio" id="myCheck2" name="check" value="notadmin" required>
+          <label  class="lab"for="check"> طالب </label>  
+          </div>
+          <input type="submit" class="a" value="دخول" >
+          
+          
+        </form>
+      </div>
+        </div>
+ 
+</body>
+<script>
+
+
+
+
+
+  
+  if(annyang) {
+      
+      var commands = {
+       'رقم التسجيل *tag':function(variable){
+       let id=document.getElementById('number');
+       variable=variable.replaceAll(" ", "");
+       id.value=variable;
+       },
+      'كلمه السر *tag':function(variable){ 
+      let password= document.getElementById('password');
+       variable=variable.replaceAll(" ", "");
+       variable=convert(variable);
+       password.value= variable;
+         },
+       'دخول':function(){
+        let id=document.getElementById('number').value;
+        let password= document.getElementById('password').value;
+        const cb = document.querySelector('#myCheck1');
+        var boolean1= cb.checked;
+        const cb2 = document.querySelector('#myCheck2');
+        var boolean2= cb2.checked;
+        
+        if (id=="" || password=="" ){
+          document.getElementById('id02').style.display='block';
+           }
+        
+        else if (boolean1==false && boolean2==false) {
+          document.getElementById('id02').style.display='block';
+        } else {
+          document.getElementById('info').submit();
+        } 
+        },
+        'ادمن':function(){
+        document.getElementById('myCheck1').click(); 
+         },
+         'طالب':function(){
+        document.getElementById('myCheck2').click(); 
+         },
+         'اظهار':function(){
+        document.getElementById('togglePassword').click(); 
+         },
+         'اخفاء':function(){
+        document.getElementById('togglePassword').click(); 
+         },
+        'رجوع':function(){
+           window.location.replace("/")
+         }, 
+         'اغلاق':function(){     
+          document.getElementsByClassName("cancelbtn1")[0].click();
+             
+           },
+        }
+      };
+      annyang.setLanguage('ar-PA');
+      // Add our commands to annyang
+    annyang.addCommands(commands);
+     annyang.debug();
+     annyang.start({ autoRestart: true, continuous: true });
+    
+     
+     
+      ////// for password
+    function convert(variable){
+        
+        if(variable.includes("تعجب")){
+          
+          variable=variable.replaceAll("تعجب","!")
+         }
+       
+        if(variable.includes("سلم")){
+          variable=variable.replaceAll("سلم","#")
+          
+        }
+        if(variable.includes("دولارساين")){
+          variable=variable.replaceAll("دولارساين", "$")
+        }        
+        if(variable.includes("ستار")){
+          variable=variable.replaceAll("ستار", "*") 
+        }
+        if(variable.includes("اندرسكور")){
+          variable=variable.replaceAll("اندرسكور", "_")
+          
+        }
+        if(variable.includes("ناقص")){
+          variable=variable.replaceAll("ناقص","-")
+        }
+        if(variable.includes("هوتميل")){
+          variable=variable.replaceAll("هوتميل","hotmail")        
+         }
+         if(variable.includes("جيميل")){
+           variable=variable.replaceAll("جيميل","gmail")
+         }
+        if(variable.includes("كابيتالاتش")){
+          variable=variable.replaceAll("كابيتالاتش","H")
+        }
+        if(variable.includes("اتش")){
+          variable=variable.replaceAll("اتش","h")
+        }
+        if(variable.includes("ات")){
+          variable=variable.replaceAll("ات","@")
+        } 
+       if(variable.includes("دوت")){
+           variable=variable.replaceAll("دوت",".")
+         }
+         if(variable.includes("كوم")){
+           variable=variable.replaceAll("كوم","com")
+         }
+         if(variable.includes("كابيتالكيو")){
+           variable=variable.replaceAll("كابيتالكيو","Q")
+         }
+         if(variable.includes("كابيتالدبليو")){
+          variable=variable.replaceAll("كابيتالدبليو","W")
+        }
+        if(variable.includes("كابيتالايه")){
+          variable=variable.replaceAll("كابيتالايه","A") 
+        }
+        if(variable.includes("كابيتالار")){
+          variable=variable.replaceAll("كابيتالار", "R")
+        }
+        if(variable.includes("كابيتالتي")){
+          variable=variable.replaceAll("كابيتالتي", "T") 
+        }
+        if(variable.includes("كابيتالواي")){
+          variable=variable.replaceAll("كابيتالواي", "y")
+        }
+        if(variable.includes("كابيتاليو")){
+          variable=variable.replaceAll("كابيتاليو","U")
+        }
+        if(variable.includes("كابيتالاي")){
+          variable=variable.replaceAll("كابيتالاي","I")
+        }
+        if(variable.includes("كابيتالاو")){
+          variable=variable.replaceAll("كابيتالاو","O")
+        }
+        if(variable.includes("كابيتالهي","كابيتالبهيه","كابيتالبهي")){
+          variable=variable.replaceAll("كابيتالبهيه","P")
+          variable=variable.replaceAll("كابيتالبهي","P")
+          variable=variable.replaceAll("كابيتالهي","P")
+        }
+        if(variable.includes("كابيتالاي")){
+          variable=variable.replaceAll("كابيتالاي","E")
+        }
+        if(variable.includes("كابيتالاس")){
+          variable=variable.replaceAll("كابيتالاس","S")
+        }
+        if(variable.includes("كابيتالدي")){
+          variable=variable.replaceAll("كابيتالدي","D")
+        } 
+        if(variable.includes("كابيتالاف")){
+          variable=variable.replaceAll("كابيتالاف","F")
+        }
+        if(variable.includes("كابيتالجي")){
+          variable=variable.replaceAll("كابيتالجي","G")
+        }
+       
+        if(variable.includes("كابيتالجاي")){
+          variable=variable.replaceAll("كابيتالجاي","J")
+        }
+        if(variable.includes("كابيتالكي","كابيتالكيك")){
+          variable=variable.replaceAll("كابيتالكيك","K")
+          variable=variable.replaceAll("كابيتالكي","K")
+        }
+        if(variable.includes("كابيتالال")){
+          variable=variable.replaceAll("كابيتالال","L")
+        }
+        if(variable.includes("كابيتالام")){
+          variable=variable.replaceAll("كابيتالام","M")
+        }
+        if(variable.includes("كابيتالان")){
+          variable=variable.replaceAll("كابيتالان","N")
+        }
+        if(variable.includes("كابيتالبي")){
+          variable=variable.replaceAll("كابيتالبي","B")
+        } 
+        if(variable.includes("كابيتالفي")){
+          variable=variable.replaceAll("كابيتالفي","V")
+        }
+        if(variable.includes("كابيتالسي")){ 
+          variable=variable.replaceAll("كابيتالسي","C")
+        }
+        if(variable.includes("كابيتالاكس")){
+          variable=variable.replaceAll("كابيتالاكس","X")
+        }
+        if(variable.includes("كابيتالزد")){
+          variable=variable.replaceAll("كابيتالزد","Z")
+        }
+        
+        if(variable.includes("كيو")){
+           variable=variable.replaceAll("كيو","q")
+         }
+        if(variable.includes("دبليو")){
+          variable=variable.replaceAll("دبليو","w")
+        }
+        if(variable.includes("ايه")){
+          variable=variable.replaceAll("ايه","a") 
+        }
+        if(variable.includes("ار")){
+          variable=variable.replaceAll("ار", "r")
+        }
+        if(variable.includes("تي")){
+          variable=variable.replaceAll("تي", "t") 
+        }
+        if(variable.includes("واي")){
+          variable=variable.replaceAll("واي", "y")
+        }
+        if(variable.includes("يو")){
+          variable=variable.replaceAll("يو","u")
+        }
+        
+        if(variable.includes("او")){
+          variable=variable.replaceAll("او","o")
+        }
+        if(variable.includes("هي","هيه","بهيه")){
+          variable=variable.replaceAll("بهيه","p")
+          variable=variable.replaceAll("هيه","p")
+          variable=variable.replaceAll("هي","p")
+        }
+       
+        if(variable.includes("اس")){
+          variable=variable.replaceAll("اس","s")
+        }
+        if(variable.includes("دي")){
+          variable=variable.replaceAll("دي","d")
+        }
+        if(variable.includes("اف")){
+          variable=variable.replaceAll("اف","f")
+        }
+        if(variable.includes("جي")){
+          variable=variable.replaceAll("جي","g")
+        }
+        if(variable.includes("جاي")){
+          variable=variable.replaceAll("جاي","j")
+        }
+        if(variable.includes("اي")){
+          variable=variable.replaceAll("اي","e")
+        }
+        if(variable.includes("اي")){
+          variable=variable.replaceAll("اي","i")
+        }
+        if(variable.includes("كي","كيك")){
+          variable=variable.replaceAll("كيك","k")
+          variable=variable.replaceAll("كي","k")
+        }
+        if(variable.includes("ال")){
+          variable=variable.replaceAll("ال","l")
+        }
+        if(variable.includes("ام")){
+          variable=variable.replaceAll("ام","m")
+        }
+        if(variable.includes("ان")){
+          variable=variable.replaceAll("ان","n")
+        }
+        if(variable.includes("بي")){
+          variable=variable.replaceAll("بي","b")
+        }
+        if(variable.includes("في")){
+          variable=variable.replaceAll("في","v")
+        }
+        if(variable.includes("سي")){
+          variable=variable.replaceAll("سي","c")
+        }
+        if(variable.includes("اكس")){
+          variable=variable.replaceAll("اكس","x")
+        }
+        if(variable.includes("زد")){
+          variable=variable.replaceAll("زد","z")
+        }
+       return variable
+      }
+
+
+      let togglePassword = document.getElementById("togglePassword");
+      let password = document.getElementById("password");
+
+      togglePassword.addEventListener("click", function () {
+          // toggle the type attribute
+          const type = password.getAttribute("type") === "password" ? "text" : "password";
+          password.setAttribute("type", type);
+          
+          // toggle the icon
+          this.classList.toggle("bi-eye");
+      });
+   </script>   
+  
+         
+</html>
